@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Work in Progress — Jacky Nam</title>
+  <meta name="description" content="What Jacky Nam is currently building: a complete ultrasound imaging platform — five custom boards plus a PyTorch U-Net denoiser." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=4" />
+</head>
+<body>
+
+  <div class="page" id="top">
+
+    <header class="nav">
+      <a class="nav__name" href="index.html">Jacky Nam</a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="work-in-progress.html" class="is-here" aria-current="page">Work in Progress</a>
+        <a href="ReferenceDeck.pdf" target="_blank" rel="noopener">Projects</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+
+      <section class="section section--page">
+        <h2 class="reveal"><span class="mono h-index">01</span> Work in progress</h2>
+        <div class="reveal">
+          <p>
+            Currently working on my capstone: a complete ultrasound platform. Five custom boards —
+            main control, transducer driver, analog front-end, display/image-processing, and power
+            management — plus a PyTorch U-Net that denoises the reconstructed image.
+          </p>
+          <p>
+            The hard part isn't any one piece; it's that a returning echo is measured in microvolts
+            and everything between the transducer and the screen is a chance to ruin it.
+          </p>
+          <ul class="now-list">
+            <li><span class="mono">●</span> Hardware — five-board signal chain, low-noise analog routing, EMI separation</li>
+            <li><span class="mono">●</span> ML — U-Net denoiser, residual-noise target, verified on GPU before real data</li>
+            <li><span class="mono">◦</span> Next — Field II simulated data, real ultrasound metrics, MPS inference</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="reveal"><span class="mono h-index">//</span> How I work</h2>
+        <div class="reveal">
+          <p>A few things I believe about building:</p>
+          <ul class="beliefs">
+            <li>
+              <strong>Verify the trivial version first.</strong> A training loop has to overfit four
+              images before it sees real data; a noise budget is set before a trace is routed.
+            </li>
+            <li>
+              <strong>Fail loudly, early.</strong> If CUDA isn't live, the script exits — it doesn't
+              limp along on CPU and waste an afternoon.
+            </li>
+            <li>
+              <strong>Swap one thing at a time.</strong> The denoiser was built so real data drops in
+              by changing only the Dataset class. Nothing else moves.
+            </li>
+            <li>
+              <strong>The boring layers matter most.</strong> Power and grounding decide whether the
+              clever parts get to work at all.
+            </li>
+          </ul>
+          <p class="tools mono">
+            tools — python · c/c++ · pytorch · cuda · numpy · pcb design · git · windows/linux
+          </p>
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <script src="script.js?v=4"></script>
+</body>
+</html>
