@@ -1,0 +1,218 @@
+/* =========================================================
+   Jacky Nam — Portfolio
+   Minimal, text-first, single column.
+   Theme: neutral (green-tinted) darks + shades of green.
+   Inspired by thariq.io / calvinjaychen.com / logank.ai
+   ========================================================= */
+
+:root {
+  /* neutrals, faintly green */
+  --bg:      #0c0f0d;
+  --surface: #121613;
+  --line:    #232c25;
+
+  /* text */
+  --text:  #e6ece6;
+  --body:  #aab5ac;
+  --faint: #6c776e;
+
+  /* greens */
+  --green:        #5cbd8e;
+  --green-bright: #79e2aa;
+  --green-soft:   #a9eac8;
+  --green-deep:   #15301f;
+
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
+
+  --maxw: 680px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---------- reset ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 2rem; -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--font-sans);
+  font-size: 1.02rem;
+  background: var(--bg);
+  color: var(--body);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 8rem 1.4rem 3rem; /* generous top bound — content sits ~1in lower */
+}
+
+::selection { background: var(--green); color: #06150d; }
+img, svg, canvas { display: block; max-width: 100%; }
+
+/* ---------- text + links ---------- */
+h1, h2, h3 { color: var(--text); line-height: 1.25; letter-spacing: -0.01em; }
+h1 { font-size: 1.7rem; font-weight: 700; }
+h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 1rem; }
+h3 { font-size: 1rem;  font-weight: 600; }
+
+p + p { margin-top: 1rem; }
+strong { color: var(--text); font-weight: 600; }
+em { color: var(--green-soft); font-style: normal; }
+
+a {
+  color: var(--green-soft);
+  text-decoration: underline;
+  text-decoration-color: var(--green-deep);
+  text-underline-offset: 3px;
+  transition: color 0.2s, text-decoration-color 0.2s;
+}
+a:hover { color: var(--green-bright); text-decoration-color: var(--green); }
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  color: var(--green-soft);
+  background: var(--green-deep);
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--faint);
+}
+
+.accent { color: var(--green); }
+
+/* ---------- nav (name left, links right) ---------- */
+.nav {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-bottom: 1rem;
+}
+.nav__name {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--text);
+  text-decoration: none;
+}
+.nav__name:hover { color: var(--green-bright); }
+.nav__links { display: flex; gap: 1.3rem; flex-wrap: wrap; }
+.nav__links a {
+  font-size: 0.9rem;
+  color: var(--body);
+  text-decoration: none;
+}
+.nav__links a:hover { color: var(--green-bright); }
+.nav__links a.is-here { color: var(--green-bright); }
+
+/* ---------- intro (landing, centered between nav and viewport bottom) ---------- */
+.hero {
+  min-height: calc(100vh - 14rem); /* viewport minus page top padding + nav */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 5vh; /* slight upward bias */
+}
+.intro h1 { margin: 0.9rem 0 1.1rem; }
+.intro__hello { display: flex; align-items: center; gap: 0.6rem; }
+.dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--green-bright);
+  box-shadow: 0 0 0 4px rgba(121, 226, 170, 0.14);
+}
+
+/* QRS complex with labels anchored at Q / R / S (per reference diagram) */
+.signal {
+  position: relative;
+  margin-top: 2.8rem;
+  padding: 1.9rem 0 2rem; /* room above the R peak and below the Q/S dips */
+}
+#signal { width: 100%; height: auto; }
+.signal__label {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.05em;
+  color: var(--green-soft);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--green-deep);
+  padding-bottom: 1px;
+  white-space: nowrap;
+  transition: color 0.2s, border-color 0.2s;
+}
+.signal__label:hover { color: var(--green-bright); border-color: var(--green); }
+/* Q — below baseline, left of the dip (like "Q" in the diagram) */
+.signal__label--q { left: 43%; bottom: 0; transform: translateX(-100%); }
+/* R — above the peak */
+.signal__label--r { left: 50%; top: 0; transform: translateX(-50%); }
+/* S — below baseline, right of the dip (like "S" in the diagram) */
+.signal__label--s { left: 59%; bottom: 0; }
+
+/* ---------- sections ---------- */
+.section {
+  margin-top: 3.6rem;
+  padding-top: 2.6rem;
+  border-top: 1px dashed var(--line);
+}
+/* first section on a subpage — no divider, no extra gap */
+.section--page { margin-top: 0; padding-top: 0; border-top: 0; }
+.h-index { color: var(--green); margin-right: 0.55rem; font-size: 0.78rem; }
+
+/* now list */
+.now-list { list-style: none; margin-top: 1.1rem; display: grid; gap: 0.45rem; }
+.now-list .mono { color: var(--green); margin-right: 0.5rem; }
+
+/* made entries */
+.entry { margin-top: 1.8rem; }
+.entry:first-of-type { margin-top: 1.4rem; }
+.entry__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.4rem;
+}
+.entry__meta { font-size: 0.72rem; color: var(--green); }
+.entry h3::before { content: "▸ "; color: var(--green); }
+
+/* beliefs */
+.beliefs { list-style: none; margin-top: 1rem; display: grid; gap: 0.9rem; }
+.beliefs li { padding-left: 1.2rem; position: relative; }
+.beliefs li::before { content: "—"; position: absolute; left: 0; color: var(--green); }
+
+.tools { margin-top: 1.6rem; font-size: 0.74rem; }
+
+/* ---------- reveal ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+}
+.reveal.is-visible { opacity: 1; transform: none; }
+
+/* ---------- small screens ---------- */
+@media (max-width: 480px) {
+  body { font-size: 0.98rem; }
+  h1 { font-size: 1.45rem; }
+  .page { padding-top: 3.5rem; }
+  .hero { min-height: calc(100vh - 10rem); }
+  .nav { padding-bottom: 2rem; }
+  .nav__links { gap: 1rem; }
+  .signal__label { font-size: 0.66rem; }
+}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; }
+  .reveal { opacity: 1; transform: none; }
+}
