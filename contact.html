@@ -7,12 +7,16 @@
   <title>Contact — Jacky Nam</title>
   <meta name="description"
     content="Get in touch with Jacky Nam — engineering roles and conversations about hardware, signal processing, or applied ML." />
+
+  <!-- Web3Forms access key. -->
+  <meta name="web3forms-key" content="4b7bdc97-6585-41c4-a75b-8ea9c137f963" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=4" />
+  <link rel="stylesheet" href="styles.css?v=5" />
 </head>
 
 <body>
@@ -38,13 +42,59 @@
           applied ML all in the scope of medical physics & imaging. Email is fastest — <a
             href="mailto:jackynam@outlook.com">jackynam@outlook.com</a>.
         </p>
+
+        <div class="forms reveal">
+
+          <!-- Request Resume -->
+          <form class="cform" id="resumeForm" novalidate
+            data-success="Thanks — I’ll send my resume to that address shortly.">
+            <h3 class="cform__title">Request my resume</h3>
+            <button type="submit" class="btn btn--primary cform__resumebtn">Request Resume</button>
+            <label class="cform__field">
+              <span class="cform__label mono">your email</span>
+              <input type="email" name="email" required placeholder="you@example.com" autocomplete="email" />
+            </label>
+            <!-- Web3Forms meta fields -->
+            <input type="hidden" name="subject" value="Resume request from your portfolio" />
+            <input type="hidden" name="from_name" value="Portfolio site" />
+            <input type="hidden" name="message"
+              value="Someone requested your resume via the portfolio site. Reply to the email address above." />
+            <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <p class="cform__status" role="status" aria-live="polite"></p>
+          </form>
+
+          <div class="or-divider"><span>or</span></div>
+
+          <!-- Send a message -->
+          <form class="cform" id="messageForm" novalidate
+            data-success="Thanks — your message is on its way. I’ll reply soon.">
+            <h3 class="cform__title">Send a message</h3>
+            <label class="cform__field">
+              <span class="cform__label mono">message</span>
+              <textarea name="message" rows="5" required placeholder="What’s on your mind?"></textarea>
+            </label>
+            <div class="cform__row">
+              <label class="cform__field cform__field--grow">
+                <span class="cform__label mono">your email</span>
+                <input type="email" name="email" required placeholder="you@example.com" autocomplete="email" />
+              </label>
+              <button type="submit" class="btn btn--primary cform__send">Send</button>
+            </div>
+            <!-- Web3Forms meta fields -->
+            <input type="hidden" name="subject" value="New message from your portfolio" />
+            <input type="hidden" name="from_name" value="Portfolio site" />
+            <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <p class="cform__status" role="status" aria-live="polite"></p>
+          </form>
+
+        </div>
       </section>
 
     </main>
 
   </div>
 
-  <script src="script.js?v=4"></script>
+  <script src="script.js?v=5"></script>
 </body>
 
 </html>
