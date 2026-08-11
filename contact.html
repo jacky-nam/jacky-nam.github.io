@@ -4,11 +4,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact — Jacky Nam</title>
+  <title>Contact · Jacky Nam</title>
   <meta name="description"
-    content="Get in touch with Jacky Nam — engineering roles and conversations about hardware, signal processing, or applied ML." />
+    content="Get in touch with Jacky Nam. Engineering roles and conversations about hardware, signal processing, or applied ML." />
 
-  <!-- Web3Forms access key. -->
   <meta name="web3forms-key" content="4b7bdc97-6585-41c4-a75b-8ea9c137f963" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,7 +15,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=5" />
+  <link rel="stylesheet" href="styles.css?v=9" />
 </head>
 
 <body>
@@ -25,27 +24,25 @@
 
     <header class="nav">
       <a class="nav__name" href="index.html">Jacky Nam</a>
-      <nav class="nav__links" aria-label="Primary">
-        <a href="work-in-progress.html">Work in Progress</a>
-        <a href="ReferenceDeck.pdf" target="_blank" rel="noopener">Projects</a>
-        <a href="contact.html" class="is-here" aria-current="page">Contact</a>
+      <nav class="nav__links" aria-label="Pages">
+        <a href="work-in-progress.html">work in progress</a>
+        <a href="ReferenceDeck.pdf" target="_blank" rel="noopener">projects</a>
+        <a href="contact.html" class="is-here" aria-current="page">contact</a>
       </nav>
     </header>
 
     <main>
 
       <section class="section section--page">
-        <h2 class="reveal"><span class="mono h-index">//</span>I love conversations, reach out</h2>
+        <h2 class="reveal"><span class="mono h-index">//</span>Reach out</h2>
         <p class="reveal">
           I'm open to engineering roles and conversations if I'm a good fit in positions about hardware, signal
-          processing, or
-          applied ML all in the scope of medical physics & imaging. Email is fastest — <a
-            href="mailto:jackynam@outlook.com">jackynam@outlook.com</a>.
+          processing or applied ML all in the scope of medical devices & imaging. Email is fastest,
+          <a href="mailto:jackynam@outlook.com">jackynam@outlook.com</a>.
         </p>
 
         <div class="forms reveal">
 
-          <!-- Request Resume -->
           <form class="cform" id="resumeForm" novalidate
             data-success="Thanks, I’ll send my resume soon and it shouldn't take longer than 2 days.">
             <h3 class="cform__title">My resume available by request.</h3>
@@ -54,7 +51,6 @@
               <span class="cform__label mono">your email</span>
               <input type="email" name="email" required placeholder="you@example.com" autocomplete="email" />
             </label>
-            <!-- Web3Forms meta fields -->
             <input type="hidden" name="subject" value="Resume request from your portfolio" />
             <input type="hidden" name="from_name" value="Portfolio site" />
             <input type="hidden" name="message"
@@ -65,7 +61,6 @@
 
           <div class="or-divider"><span>or</span></div>
 
-          <!-- Send a message -->
           <form class="cform" id="messageForm" novalidate
             data-success="Thanks, your message is on its way and I’ll reply soon, shouldn't be longer than 2 days.">
             <h3 class="cform__title">Reach out for something more detailed or questions.</h3>
@@ -80,7 +75,6 @@
               </label>
               <button type="submit" class="btn btn--primary cform__send">Send</button>
             </div>
-            <!-- Web3Forms meta fields -->
             <input type="hidden" name="subject" value="New message from your portfolio" />
             <input type="hidden" name="from_name" value="Portfolio site" />
             <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
@@ -94,7 +88,7 @@
 
   </div>
 
-  <script src="script.js?v=5"></script>
+  <script src="script.js?v=8"></script>
 </body>
 
 </html>
