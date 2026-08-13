@@ -219,6 +219,112 @@ a:hover { color: var(--orange); text-decoration-color: var(--orange); }
   background: var(--line);
 }
 
+/* projects page: embedded deck */
+
+.deck__actions {
+  margin-top: 1.6rem;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+.btn--link {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--bg);
+}
+.btn--link:hover { color: var(--bg); }
+.deck__download {
+  color: var(--green);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--line);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.deck__download:hover { color: var(--orange); border-color: var(--orange); }
+
+.deck {
+  margin-top: 1.4rem;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.deck__frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: min(80vh, 760px);
+  border: 0;
+  background: var(--surface);
+}
+/* only rendered when the browser refuses to embed the PDF */
+.deck__fallback {
+  max-width: 46ch;
+  padding: 1.4rem;
+  margin: 0;
+  font-size: 0.94rem;
+  text-align: center;
+}
+.deck__note { margin-top: 0.9rem; font-size: 0.72rem; }
+
+/* projects page: repository-driven concept preview */
+
+.concept-flag {
+  margin-top: 0.2rem;
+  margin-bottom: 1.1rem;
+  padding: 0.6rem 0.85rem;
+  border: 1px dashed var(--orange);
+  border-radius: 8px;
+  color: var(--orange);
+  font-size: 0.72rem;
+  line-height: 1.6;
+}
+
+.repo-grid {
+  margin-top: 1.8rem;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.repo-card {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 12px;
+  padding: 1.1rem 1.2rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.repo-card__name {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  color: var(--green);
+  word-break: break-word;
+}
+.repo-card__desc { font-size: 0.92rem; line-height: 1.6; }
+.repo-card__meta {
+  margin-top: auto;
+  padding-top: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  font-size: 0.7rem;
+}
+.repo-card__lang { display: inline-flex; align-items: center; gap: 0.4rem; }
+.lang-dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+.lang-dot--c   { background: var(--red); }
+.lang-dot--py  { background: var(--yellow); }
+.lang-dot--hdl { background: var(--orange); }
+.lang-dot--m   { background: var(--green); }
+
+@media (max-width: 640px) {
+  .repo-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
 @media (max-width: 480px) {
   body { font-size: 0.98rem; }
   h1 { font-size: 1.45rem; }
@@ -226,6 +332,10 @@ a:hover { color: var(--orange); text-decoration-color: var(--orange); }
   .nav__name { font-size: 1.35rem; }
   .cform__row { flex-direction: column; align-items: stretch; }
   .cform__send { width: 100%; }
+  .deck__actions { align-items: stretch; flex-direction: column; gap: 0.9rem; }
+  .btn--link { text-align: center; }
+  .deck__download { align-self: start; }
+  .deck__frame { height: min(70vh, 520px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
