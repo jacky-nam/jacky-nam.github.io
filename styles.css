@@ -269,24 +269,13 @@ a:hover { color: var(--orange); text-decoration-color: var(--orange); }
 }
 .deck__note { margin-top: 0.9rem; font-size: 0.72rem; }
 
-/* projects page: repository-driven concept preview */
-
-.concept-flag {
-  margin-top: 0.2rem;
-  margin-bottom: 1.1rem;
-  padding: 0.6rem 0.85rem;
-  border: 1px dashed var(--orange);
-  border-radius: 8px;
-  color: var(--orange);
-  font-size: 0.72rem;
-  line-height: 1.6;
-}
+/* projects page: project cards */
 
 .repo-grid {
   margin-top: 1.8rem;
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
   gap: 1rem;
 }
 .repo-card {
@@ -308,6 +297,7 @@ a:hover { color: var(--orange); text-decoration-color: var(--orange); }
 .repo-card__meta {
   margin-top: auto;
   padding-top: 0.4rem;
+  color: var(--body);
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -321,8 +311,29 @@ a:hover { color: var(--orange); text-decoration-color: var(--orange); }
 .lang-dot--hdl { background: var(--orange); }
 .lang-dot--m   { background: var(--green); }
 
-@media (max-width: 640px) {
-  .repo-grid { grid-template-columns: minmax(0, 1fr); }
+/* projects page: captured terminal output */
+
+.terminal {
+  margin-top: 1.2rem;
+  padding: 1.1rem 1.2rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  font-family: var(--font-mono);
+  font-variant-ligatures: none;
+  font-size: 0.74rem;
+  line-height: 1.8;
+  color: var(--body);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.terminal__prompt { color: var(--green); }
+.terminal__cmd  { color: var(--text); font-weight: 500; }
+.terminal__fail { color: var(--red); }
+.terminal__pass { color: var(--green); }
+
+@media (max-width: 480px) {
+  .terminal { font-size: 0.68rem; padding: 0.9rem 1rem; }
 }
 
 @media (max-width: 480px) {
