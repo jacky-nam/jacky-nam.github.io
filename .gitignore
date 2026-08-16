@@ -7,6 +7,3 @@ desktop.ini
 .vscode/
 .idea/
 *.swp
-
-# Claude Code local settings (keep launch.json, ignore personal/local settings)
-.claude/settings.local.json
