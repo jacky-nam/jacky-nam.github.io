@@ -333,10 +333,6 @@ a:hover { color: var(--orange); text-decoration-color: var(--orange); }
 .terminal__pass { color: var(--green); }
 
 @media (max-width: 480px) {
-  .terminal { font-size: 0.68rem; padding: 0.9rem 1rem; }
-}
-
-@media (max-width: 480px) {
   body { font-size: 0.98rem; }
   h1 { font-size: 1.45rem; }
   .page { padding-top: 3.5rem; }
@@ -347,6 +343,7 @@ a:hover { color: var(--orange); text-decoration-color: var(--orange); }
   .btn--link { text-align: center; }
   .deck__download { align-self: start; }
   .deck__frame { height: min(70vh, 520px); }
+  .terminal { padding: 0.9rem 1rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
