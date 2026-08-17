@@ -273,6 +273,8 @@ a:hover { color: var(--orange); text-decoration-color: var(--orange); }
 
 .repo-grid {
   margin-top: 1.8rem;
+  /* list-style: none strips list semantics in Safari/VoiceOver, so the
+     markup carries an explicit role="list" — keep the two together. */
   list-style: none;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
@@ -303,9 +305,12 @@ a:hover { color: var(--orange); text-decoration-color: var(--orange); }
   flex-wrap: wrap;
   font-size: 0.7rem;
 }
+/* .mono paints text --faint (~2.4:1, below AA); the language label has to be
+   readable, so override it here rather than inherit the faint colour. */
 .repo-card__meta.mono { color: var(--body); }
 .repo-card__lang { display: inline-flex; align-items: center; gap: 0.4rem; }
 .lang-dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+/* only --py is used today; the rest are kept so future cards have a palette. */
 .lang-dot--c   { background: var(--red); }
 .lang-dot--py  { background: var(--yellow); }
 .lang-dot--hdl { background: var(--orange); }
@@ -320,6 +325,8 @@ a:hover { color: var(--orange); text-decoration-color: var(--orange); }
   border-radius: 12px;
   background: var(--surface);
   font-family: var(--font-mono);
+  /* JetBrains Mono ligates the captured output's "<->" into one arrow glyph,
+     which would misrepresent the real text. */
   font-variant-ligatures: none;
   font-size: 0.74rem;
   line-height: 1.8;
