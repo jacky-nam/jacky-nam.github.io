@@ -297,13 +297,13 @@ a:hover { color: var(--orange); text-decoration-color: var(--orange); }
 .repo-card__meta {
   margin-top: auto;
   padding-top: 0.4rem;
-  color: var(--body);
   display: flex;
   align-items: center;
   gap: 0.5rem;
   flex-wrap: wrap;
   font-size: 0.7rem;
 }
+.repo-card__meta.mono { color: var(--body); }
 .repo-card__lang { display: inline-flex; align-items: center; gap: 0.4rem; }
 .lang-dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
 .lang-dot--c   { background: var(--red); }
