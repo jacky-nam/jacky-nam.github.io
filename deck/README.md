@@ -6,12 +6,15 @@ headless Chrome.
 
 ## Re-render
 
-After editing any deck source, rebuild the PDF with one command from anywhere
-in the repo:
+After editing any deck source, rebuild the PDF with one command from the
+repo root:
 
 ```sh
 ./deck/render.sh
 ```
+
+(The script resolves its own location, so it also works run from any other
+directory via its path.)
 
 This renders `index.html` to a 16:9 landscape PDF and writes it to
 `ReferenceDeck.pdf` at the repo root (the path the portfolio page embeds).
