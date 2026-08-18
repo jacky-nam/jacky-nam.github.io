@@ -30,11 +30,7 @@
     <main>
 
       <section class="section section--page" aria-labelledby="deck-heading">
-        <h2 class="reveal" id="deck-heading"><span class="mono h-index">//</span>Reference deck</h2>
-        <p class="reveal">
-          May not be the most up to date.
-        </p>
-
+        <h2 class="reveal" id="deck-heading"><span class="mono h-index">//</span>Reference Deck</h2>
         <p class="deck__actions reveal">
           <a class="btn btn--primary btn--link" href="ReferenceDeck.pdf" target="_blank" rel="noopener">
             Open the reference deck (PDF)
@@ -56,53 +52,6 @@
         <p class="mono deck__note reveal">
           the embedded viewer is a convenience, the links above always work
         </p>
-      </section>
-
-      <section class="section" aria-labelledby="build-heading">
-        <h2 class="reveal" id="build-heading"><span class="mono h-index">//</span>What I'm building</h2>
-
-        <p class="reveal">
-          One project, described in its own terms, with a real run of it underneath.
-          The repository is private, so there is nothing to link to yet: the card is the description,
-          and the output below is the evidence.
-        </p>
-
-        <ul class="repo-grid reveal" role="list" aria-label="Projects">
-
-          <li class="repo-card">
-            <h3 class="repo-card__name">thev</h3>
-            <p class="repo-card__desc">
-              Tells you whether two electronic components work together, and what it would take to connect them if
-              they don't.
-            </p>
-            <p class="repo-card__desc">
-              Parts fail to connect for specific reasons &mdash; a 3.3&nbsp;V board against a 5&nbsp;V sensor, I2C
-              against SPI, a supply that cannot deliver the current a load wants. thev models each part as a set of
-              typed ports and judges a connection one dimension at a time, so an answer always carries its reason.
-              When two parts do not fit, it searches for the shortest chain of parts that makes them fit.
-            </p>
-            <p class="repo-card__meta mono">
-              <span class="repo-card__lang"><span class="lang-dot lang-dot--py" aria-hidden="true"></span>Python</span>
-            </p>
-          </li>
-
-        </ul>
-
-        <p class="reveal">
-          Here it is refusing a connection: a USB supply and a 5&nbsp;V heating pad that agree on direction, protocol,
-          voltage and connector, and fail on current budget alone. The pad wants 1200&nbsp;mA; the port offers 500.
-        </p>
-
-        <pre class="terminal reveal" tabindex="0" role="region" aria-label="Terminal output from thev check"><span class="terminal__prompt">$</span> <span class="terminal__cmd">thev check psu-usb-500ma heater-pad-5v</span>
-psu-usb-500ma &lt;-&gt; heater-pad-5v: <span class="terminal__fail">INCOMPATIBLE</span>
-no port pairing satisfies every applicable rule; the closest is out &lt;-&gt; in fails on only 500 mA supplied against 1200 mA drawn
-
-  out &lt;-&gt; in  <span class="terminal__fail">FAIL</span>
-    <span class="terminal__pass">[pass]</span> direction  source port pairs with sink port
-    <span class="terminal__pass">[pass]</span> protocol   both ports speak power
-    <span class="terminal__pass">[pass]</span> voltage    4.75-5.25 V and 4.75-5.25 V share 4.75-5.25 V
-    <span class="terminal__fail">[FAIL]</span> current    only 500 mA supplied against 1200 mA drawn
-    <span class="terminal__pass">[pass]</span> connector  female usb-a mates with male usb-a</pre>
       </section>
 
     </main>

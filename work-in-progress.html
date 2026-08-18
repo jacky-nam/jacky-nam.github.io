@@ -33,20 +33,35 @@
       <section class="section section--page">
         <h2 class="reveal"><span class="mono h-index">//</span>What I'm doing right now</h2>
         <p class="reveal">
-          My capstone is a complete ultrasound imaging platform built from scratch. Five custom boards handle main
-          control, transducer driving, the analog front-end, display and image processing, and power management, and a
-          PyTorch U-Net cleans up the reconstructed image at the end of the chain.<br><br>
-
-          The central constraint is signal integrity. A returning echo is measured in microvolts and every stage
-          between the transducer and the screen can degrade it. That drives most of the design decisions: low-noise
-          analog routing, careful filter design and physical separation between the digital sections and the sensitive
-          front-end. Simulations in k-Wave and ngspice have guided this work, but their results only partially transfer
-          to a physical board, so each stage is validated on hardware as it comes up.<br><br>
-
-          On the imaging side, the U-Net denoiser currently trains on simulated data, which limits how well it
-          generalizes. The next steps are assembling real ultrasound imagery, evaluating against standard image quality
-          metrics and then integrating inference into the platform.
+          My capstone is a complete ultrasound imaging platform built from scratch: five custom boards covering main
+          control, transducer driving, the analog front-end, display and image processing, and power management, with a
+          PyTorch U-Net cleaning up the reconstructed image at the end of the chain.
         </p>
+
+        <ul class="repo-grid reveal" role="list" aria-label="Projects">
+
+          <li class="repo-card">
+            <h3 class="repo-card__name">thev</h3>
+            <p class="repo-card__desc">
+              A supply chain compatibility tool for hardware components, linked to consumer and industry datasheets.
+            </p>
+            <p class="repo-card__meta mono">
+              <span class="repo-card__lang"><span class="lang-dot lang-dot--py" aria-hidden="true"></span>Python</span>
+            </p>
+          </li>
+
+        </ul>
+
+        <pre class="terminal reveal" tabindex="0" role="region" aria-label="Terminal output from thev check"><span class="terminal__prompt">$</span> <span class="terminal__cmd">thev check psu-usb-500ma heater-pad-5v</span>
+psu-usb-500ma &lt;-&gt; heater-pad-5v: <span class="terminal__fail">INCOMPATIBLE</span>
+no port pairing satisfies every applicable rule; the closest is out &lt;-&gt; in fails on only 500 mA supplied against 1200 mA drawn
+
+  out &lt;-&gt; in  <span class="terminal__fail">FAIL</span>
+    <span class="terminal__pass">[pass]</span> direction  source port pairs with sink port
+    <span class="terminal__pass">[pass]</span> protocol   both ports speak power
+    <span class="terminal__pass">[pass]</span> voltage    4.75-5.25 V and 4.75-5.25 V share 4.75-5.25 V
+    <span class="terminal__fail">[FAIL]</span> current    only 500 mA supplied against 1200 mA drawn
+    <span class="terminal__pass">[pass]</span> connector  female usb-a mates with male usb-a</pre>
       </section>
 
       <section class="section">
