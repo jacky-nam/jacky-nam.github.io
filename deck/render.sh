@@ -42,8 +42,9 @@ find_chrome() {
 
 CHROME="$(find_chrome)"
 
-TMP_PDF="$(mktemp -t referencedeck-XXXXXX).pdf"
-trap 'rm -f "$TMP_PDF"' EXIT
+TMP_DIR="$(mktemp -d -t referencedeck)"
+TMP_PDF="$TMP_DIR/deck.pdf"
+trap 'rm -rf "$TMP_DIR"' EXIT
 
 "$CHROME" \
   --headless=new \
