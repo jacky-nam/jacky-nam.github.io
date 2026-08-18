@@ -336,8 +336,8 @@ a:hover { color: var(--orange); text-decoration-color: var(--orange); }
 }
 .terminal__prompt { color: var(--green); }
 .terminal__cmd  { color: var(--text); font-weight: 500; }
-.terminal__fail { color: var(--red); }
-.terminal__pass { color: var(--green); }
+.terminal__fail { color: #b53357; }
+.terminal__pass { color: #1b7059; }
 
 @media (max-width: 480px) {
   body { font-size: 0.98rem; }
