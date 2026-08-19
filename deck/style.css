@@ -133,6 +133,30 @@ html, body {
   text-decoration: none;
 }
 
+.title-frame--closing {
+  border-top: none;
+  padding-top: 0;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.title-frame--closing .byline {
+  font-size: 34pt;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  margin-top: 0;
+  color: #fff;
+}
+
+.title-frame--closing .contact {
+  font-size: 13pt;
+  line-height: 1.8;
+  margin-top: 0.28in;
+  padding-top: 0.28in;
+  border-top: 2px solid #565b60;
+}
+
 /* ---------- Content slides ---------- */
 
 .head {
