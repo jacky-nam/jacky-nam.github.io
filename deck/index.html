@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Reference Deck</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- 1: TITLE -->
+<section class="slide slide--title">
+  <div class="title-frame">
+    <div>
+      <div class="kicker">Reference Deck</div>
+      <h1>Biomedical Imaging, Instrumentation &amp; Device Design</h1>
+      <p class="framing">
+        A working reference of graduate project and lab work spanning medical imaging
+        physics, biosignal instrumentation, and orthopedic device design: hands-on
+        modality work across X-ray/CT, ultrasound, and MRI systems with Fourier-based
+        reconstruction and image-quality analysis; EEG hardware built and validated
+        against clinical-reference equipment; and a hip implant redesign carried from
+        clinical problem to biomaterial selection.
+      </p>
+      <div class="scope-list">
+        <div><b>Medical Imaging</b>X-ray/CT, ultrasound, MRI &mdash; acquisition, reconstruction, and image-quality analysis</div>
+        <div><b>Instrumentation</b>EEG front-end design, built and bench-tested against clinical reference hardware</div>
+        <div><b>Device Design</b>Case study: hip implant redesign from diagnosis to materials selection</div>
+      </div>
+    </div>
+    <div>
+      <div class="byline">Jacky Nam</div>
+      <div class="contact">
+        Edu: <a href="mailto:namj10@mcmaster.ca">namj10@mcmaster.ca</a><br>
+        Personal: <a href="mailto:jackynam@outlook.com">jackynam@outlook.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2: SECTION DIVIDER — IMAGING -->
+<section class="slide slide--section">
+  <div class="num">01</div>
+  <h2>Medical Imaging Systems</h2>
+  <p>
+    Experimental and diagnostic work performed with DeskCAT (simulated X-ray/CT),
+    Clarius L15 and C3 (ultrasound), the Earth&rsquo;s Field MRI apparatus (NMR),
+    and the 0.345T ilumr MRI system &mdash; applying Fourier-transform theory to
+    image formation, reconstruction, and analysis in MATLAB and Python.
+  </p>
+</section>
+
+<!-- 3: INSTRUMENTATION OVERVIEW -->
+<section class="slide">
+  <div class="head">
+    <div>
+      <div class="eyebrow">01 &middot; Medical Imaging</div>
+      <h2>Lab Instrumentation</h2>
+    </div>
+    <div class="pageno">Imaging Systems</div>
+  </div>
+  <div class="body-grid">
+    <div class="text-col">
+      <p class="label">Systems Used</p>
+      <p>Experimental and diagnostic work performed with the following systems:</p>
+      <ul class="list-plain">
+        <li>DeskCAT for simulated X-ray and CT</li>
+        <li>Clarius L15 and C3 for ultrasound</li>
+        <li>Earth&rsquo;s Field MRI apparatus for NMR</li>
+        <li>0.345T ilumr system for MRI</li>
+      </ul>
+      <div class="takeaway">
+        <b>Takeaway:</b> hands-on operation of four distinct imaging modalities &mdash;
+        projection X-ray/CT, handheld ultrasound, and two MRI/NMR platforms &mdash;
+        spanning benchtop teaching systems to a clinical-field-strength scanner.
+      </div>
+    </div>
+    <div class="figure-col figs-2x2">
+      <figure class="fig"><img src="images/instr-deskcat.jpeg" alt="DeskCAT simulated X-ray/CT scanner"><figcaption>DeskCAT &mdash; simulated X-ray/CT scanner with phantom insert</figcaption></figure>
+      <figure class="fig"><img src="images/instr-clarius-l15.jpeg" alt="Clarius handheld ultrasound probe"><figcaption>Clarius handheld ultrasound transducer (L15/C3 series)</figcaption></figure>
+      <figure class="fig"><img src="images/instr-efmri.jpeg" alt="Earth's Field MRI apparatus"><figcaption>Earth&rsquo;s Field MRI apparatus &mdash; NMR coil assembly</figcaption></figure>
+      <figure class="fig"><img src="images/instr-ilumr.jpeg" alt="ilumr 0.345T MRI system"><figcaption>0.345T ilumr MRI system</figcaption></figure>
+    </div>
+  </div>
+  <div class="foot-rule"></div>
+  <div class="pagenum">3</div>
+</section>
+
+<!-- 4: CT / X-RAY -->
+<section class="slide">
+  <div class="head">
+    <div>
+      <div class="eyebrow">01 &middot; Medical Imaging</div>
+      <h2>X-Ray &amp; CT &mdash; Reconstruction and Image Quality</h2>
+    </div>
+    <div class="pageno">Fourier Theory &middot; PSF/MTF</div>
+  </div>
+  <div class="body-grid">
+    <div class="text-col">
+      <p>
+        Applied Fourier transform theory to medical image formation, reconstruction,
+        and analysis across multiple imaging modalities using MATLAB/Python scripting.
+        CT/X-ray work shown here on a resolution phantom.
+      </p>
+      <p>Analyzed sources of noise, artifacts, and resolution limits in X-ray and CT.</p>
+      <p>
+        Evaluated image quality metrics (PSF, MTF) and QA/QC phantom calibration
+        standards for clinical imaging systems.
+      </p>
+      <div class="takeaway">
+        <b>Takeaway:</b> phantom X-ray/CT acquisition on DeskCAT, MATLAB/Python
+        reconstruction, and quantitative PSF/MTF/LSF calibration analysis against
+        QA/QC phantom standards.
+      </div>
+    </div>
+    <div class="figure-col figs-3x2">
+      <figure class="fig"><img src="images/ct-xray-phantom.jpeg" alt="X-ray phantom captures"><figcaption>DeskCAT phantom X-ray captures, resolution bar targets</figcaption></figure>
+      <figure class="fig"><img src="images/ct-spiral-recon.jpeg" alt="CT spiral reconstruction"><figcaption>CT reconstruction, phantom cross-sections</figcaption></figure>
+      <figure class="fig"><img src="images/ct-resolution-targets.jpeg" alt="Resolution target reconstructions"><figcaption>Resolution-target reconstructions</figcaption></figure>
+      <figure class="fig"><img src="images/ct-esf-lineprofile.jpeg" alt="Edge spread function line profile"><figcaption>Edge response line profile</figcaption></figure>
+      <figure class="fig"><img src="images/ct-mtf.jpeg" alt="Modulation transfer function"><figcaption>Modulation transfer function (MTF) of DeskCAT</figcaption></figure>
+      <figure class="fig"><img src="images/ct-lsf.jpeg" alt="Line spread function"><figcaption>Line spread function (LSF) of DeskCAT</figcaption></figure>
+    </div>
+  </div>
+  <div class="foot-rule"></div>
+  <div class="pagenum">4</div>
+</section>
+
+<!-- 5: ULTRASOUND -->
+<section class="slide">
+  <div class="head">
+    <div>
+      <div class="eyebrow">01 &middot; Medical Imaging</div>
+      <h2>Ultrasound &amp; Elastography</h2>
+    </div>
+    <div class="pageno">Noise, Artifact &amp; Resolution</div>
+  </div>
+  <div class="body-grid">
+    <div class="text-col">
+      <p>
+        Conducted hands-on ultrasound imaging and elastography using handheld
+        Bluetooth-connected US systems on iPads.
+      </p>
+      <p>Analyzed sources of noise, artifacts, and resolution limits in ultrasound.</p>
+      <div class="takeaway">
+        <b>Takeaway:</b> B-mode, M-mode, and color/power Doppler acquisition on
+        handheld Clarius probes, with phantom-target imaging used to characterize
+        noise, artifacts, and resolution limits.
+      </div>
+    </div>
+    <div class="figure-col figs-3x2">
+      <figure class="fig"><img src="images/us-bicep-l15-c3.jpeg" alt="Ultrasound of bicep with L15 and C3 probes"><figcaption>Bicep, longitudinal &mdash; L15HD (left), C3HD (right)</figcaption></figure>
+      <figure class="fig"><img src="images/us-mmode-carotid.jpeg" alt="M-mode ultrasound of carotid artery"><figcaption>M-mode still capture of the imaging of the carotid artery</figcaption></figure>
+      <figure class="fig"><img src="images/us-doppler-1.jpeg" alt="Color Doppler ultrasound capture"><figcaption>Color Doppler flow imaging capture</figcaption></figure>
+      <figure class="fig"><img src="images/us-doppler-2.jpeg" alt="Power Doppler ultrasound capture"><figcaption>Power Doppler flow imaging capture</figcaption></figure>
+      <figure class="fig"><img src="images/us-phantom-targets.jpeg" alt="Ultrasound phantom target images"><figcaption>Phantom target imaging &mdash; wire and cyst targets</figcaption></figure>
+      <figure class="fig"><img src="images/us-phantom-artifacts.jpeg" alt="Ultrasound phantom artifact analysis"><figcaption>Phantom imaging, annotated for artifact analysis</figcaption></figure>
+    </div>
+  </div>
+  <div class="foot-rule"></div>
+  <div class="pagenum">5</div>
+</section>
+
+<!-- 6: MRI -->
+<section class="slide">
+  <div class="head">
+    <div>
+      <div class="eyebrow">01 &middot; Medical Imaging</div>
+      <h2>MRI &mdash; Acquisition &amp; Advanced Reconstruction</h2>
+    </div>
+    <div class="pageno">DWI &middot; DTI &middot; fMRI</div>
+  </div>
+  <div class="body-grid">
+    <div class="text-col">
+      <p>
+        Performed MRI experiments on 0.33T Flowerpot MRI systems including
+        calibration, T1/T2 measurement, shimming, and imaging sequence selection
+        (gradient echo, spin echo, RARE).
+      </p>
+      <p>
+        Analyzed advanced MRI data including diffusion weighted imaging (DWI),
+        diffusion tensor imaging (DTI), and functional MRI (fMRI) from human
+        scanning sessions.
+      </p>
+      <p>Reconstructed in Python.</p>
+      <div class="takeaway">
+        <b>Takeaway:</b> full MRI experimental pipeline &mdash; system calibration
+        and sequence selection through to DWI/DTI/fMRI reconstruction and scalar-map
+        analysis (FA, MD, AD, RD) in Python.
+      </div>
+    </div>
+    <div class="figure-col figs-2x2">
+      <figure class="fig"><img src="images/mri-noise-maps-small.jpeg" alt="MRI noise maps with and without diffusion weighting"><figcaption>k-space noise maps, with/without diffusion weighting</figcaption></figure>
+      <figure class="fig"><img src="images/mri-noise-subtraction.jpeg" alt="MRI diffusion weighting subtraction image"><figcaption>Diffusion weighting comparison and subtraction image</figcaption></figure>
+      <figure class="fig"><img src="images/mri-dti-scalar-maps.jpeg" alt="DTI scalar maps: FA, MD, AD, RD"><figcaption>DTI scalar maps &mdash; fractional anisotropy, mean/axial/radial diffusivity</figcaption></figure>
+      <figure class="fig"><img src="images/mri-fmri-slices.jpeg" alt="fMRI/DWI brain slice montage"><figcaption>Axial brain slice montage from human scanning session</figcaption></figure>
+    </div>
+  </div>
+  <div class="foot-rule"></div>
+  <div class="pagenum">6</div>
+</section>
+
+<!-- 7: SECTION DIVIDER — EEG -->
+<section class="slide slide--section">
+  <div class="num">02</div>
+  <h2>EEG Instrumentation</h2>
+  <p>
+    2025 &mdash; REM sleep EEG. A custom EEG front-end built around the BioAmp EXG
+    Pill, following OpenEEG reference documentation, then benchmarked against
+    clinical reference EEG equipment supplied and tested at McMaster LiveLAB.
+  </p>
+</section>
+
+<!-- 8: EEG CIRCUIT DESIGN -->
+<section class="slide">
+  <div class="head">
+    <div>
+      <div class="eyebrow">02 &middot; EEG Instrumentation</div>
+      <h2>Front-End Circuit Design</h2>
+    </div>
+    <div class="pageno">2025 &mdash; REM Sleep EEG</div>
+  </div>
+  <div class="body-grid">
+    <div class="text-col">
+      <p>Hardware used sourced from BioAmp EXG Pill, used with documentation from OpenEEG.</p>
+      <div class="takeaway">
+        <b>Takeaway:</b> signal chain built from an instrumentation-amplifier input
+        stage, a 1000x-gain bandpass filter with amplifier-reference/driven-right-leg
+        (DRL) stage, and filtered power supply &mdash; with a solder-jumper electrode
+        reference supporting 2- or 3-electrode configurations.
+      </div>
+    </div>
+    <div class="figure-col figs-2x2">
+      <figure class="fig"><img src="images/eeg-circuit-ina.jpeg" alt="Instrumentation amplifier circuit"><figcaption>Instrumentation amplifier (INA) input stage</figcaption></figure>
+      <figure class="fig"><img src="images/eeg-circuit-bandpass-drl.jpeg" alt="Bandpass filter and DRL circuit"><figcaption>1000x gain bandpass filter; amp reference + driven right leg (DRL)</figcaption></figure>
+      <figure class="fig"><img src="images/eeg-circuit-power.jpeg" alt="Power supply filtering circuit"><figcaption>Power supply filtering; header pins and connectors</figcaption></figure>
+      <figure class="fig"><img src="images/eeg-circuit-electrode-ref.jpeg" alt="Electrode reference configuration"><figcaption>Electrode reference &mdash; 2- or 3-electrode solder-jumper configuration</figcaption></figure>
+    </div>
+  </div>
+  <div class="foot-rule"></div>
+  <div class="pagenum">8</div>
+</section>
+
+<!-- 9: EEG CLINICAL VALIDATION -->
+<section class="slide">
+  <div class="head">
+    <div>
+      <div class="eyebrow">02 &middot; EEG Instrumentation</div>
+      <h2>Clinical Reference Validation</h2>
+    </div>
+    <div class="pageno">2025 &mdash; REM Sleep EEG</div>
+  </div>
+  <div class="body-grid">
+    <div class="text-col">
+      <p>Clinical reference EEG equipment supplied and tested at McMaster LiveLAB.</p>
+      <div class="takeaway">
+        <b>Takeaway:</b> the custom front-end&rsquo;s recorded signal was compared
+        directly against LiveLAB&rsquo;s clinical-reference EEG recording, alongside
+        raw/envelope/cumulative-sum spectrum analysis of the captured data.
+      </div>
+    </div>
+    <div class="figure-col figs-2x2">
+      <figure class="fig"><img src="images/eeg-session-photo.jpeg" alt="EEG recording session"><figcaption>Recording session with the custom EEG front-end</figcaption></figure>
+      <figure class="fig"><img src="images/eeg-livelab-photo.jpeg" alt="McMaster LiveLAB EEG monitoring station"><figcaption>Clinical reference EEG monitoring station, McMaster LiveLAB</figcaption></figure>
+      <figure class="fig"><img src="images/eeg-spectrum-log.png" alt="EEG spectrum analysis log"><figcaption>Raw / envelope / cumulative-sum spectrum R&sup2; log, first and second recordings</figcaption></figure>
+      <figure class="fig"><img src="images/eeg-data-comparison.png" alt="EEG data comparison plot"><figcaption>Custom front-end recording vs. LiveLAB clinical-reference EEG</figcaption></figure>
+    </div>
+  </div>
+  <div class="foot-rule"></div>
+  <div class="pagenum">9</div>
+</section>
+
+<!-- 10: SECTION DIVIDER — CASE STUDY -->
+<section class="slide slide--section">
+  <div class="num">03</div>
+  <h2>Case Study: Hip Implant Redesign</h2>
+  <p>
+    2022 &mdash; a 51-year-old male presented with progressive symptoms following a
+    left total hip arthroplasty, later diagnosed with aseptic periprosthetic
+    osteolysis. The following pages trace the case from symptom progression,
+    through the underlying wear-debris mechanism, to a biocompatible implant
+    designed in response.
+  </p>
+  <p class="credit">DP2 Project Team 16: Kristina Siiman, Jacky Nam, Megan Saunders, Ali Hussin</p>
+</section>
+
+<!-- 11: CASE — PROBLEM -->
+<section class="slide">
+  <div class="head">
+    <div>
+      <div class="eyebrow">03 &middot; Case Study</div>
+      <h2>Problem &mdash; Symptom Progression</h2>
+    </div>
+    <div class="pageno">2022 &mdash; Hip Implant</div>
+  </div>
+  <div class="body-grid wide-text">
+    <div class="text-col">
+      <span class="stage-tag">Problem</span>
+      <p>Addressed concerns of a 51-year-old male after a left total hip arthroplasty.</p>
+      <p class="label">Symptoms Presented</p>
+      <ul class="list-plain">
+        <li>Increasing pressure on hip affecting mobility</li>
+        <li>Excessive increase in weight (lack of exercise, poor diet, quitting smoking)</li>
+        <li>Arthritis in hip causing little to no pain with occasional flare-ups</li>
+      </ul>
+      <p class="label">5 Years After Arthroplasty</p>
+      <ul class="list-plain"><li>Persistent, slight pain in thigh and groin</li></ul>
+      <p class="label">7 Years After Arthroplasty</p>
+      <ul class="list-plain">
+        <li>Severe pain radiating towards the hip</li>
+        <li>Shortness of breath after light exercise</li>
+        <li>Slight gait disturbance</li>
+      </ul>
+      <div class="takeaway">
+        <b>Fast facts:</b> 51 years old, 111 kg, 181 cm, BMI = 33.9. Diagnosed with
+        aseptic periprosthetic osteolysis &mdash; designed a biocompatible implant
+        able to sustain lifestyle and exercise patterns.
+      </div>
+    </div>
+    <div class="figure-col figs-2">
+      <figure class="fig"><img src="images/hip-xray-5yr.jpeg" alt="Left hip X-ray, 5 years post-replacement"><figcaption>Left hip, 5 years post-replacement</figcaption></figure>
+      <figure class="fig"><img src="images/hip-xray-7yr.jpeg" alt="Left hip X-ray, 7 years post-replacement, cavitation worsening"><figcaption>7 years post-replacement &mdash; cavitation worsening</figcaption></figure>
+    </div>
+  </div>
+  <div class="foot-rule"></div>
+  <div class="pagenum">11</div>
+</section>
+
+<!-- 12: CASE — ANALYSIS -->
+<section class="slide">
+  <div class="head">
+    <div>
+      <div class="eyebrow">03 &middot; Case Study</div>
+      <h2>Analysis &mdash; Mechanism of Failure</h2>
+    </div>
+    <div class="pageno">2022 &mdash; Hip Implant</div>
+  </div>
+  <div class="body-grid wide-text">
+    <div class="text-col">
+      <span class="stage-tag">Analysis</span>
+      <p class="label">Background: Arthritis &amp; Osteolysis</p>
+      <ul class="list-plain">
+        <li>Synovial fluid is the natural lubricating fluid allowing for smooth joint movement, protecting bones and cartilage.</li>
+        <li>Inability of the synovial joint fluid to naturally regenerate leads to cartilage degradation and inflammation of the joints, causing arthritis.</li>
+        <li>A lack of seal on the bone-implant interface and friction can lead to particulate debris from the implant causing inflammatory biological reactions.</li>
+        <li>Wear on bearing surfaces releases particles into the joint capsule which migrate to the tissues.</li>
+        <li>Foreign response to particle debris initiates bone loss.</li>
+      </ul>
+      <div class="takeaway">
+        <b>Diagnosis:</b> aseptic periprosthetic osteolysis &mdash; an inflammatory
+        response to particles excreted by the polyethylene implant, causing implant
+        degradation and aseptic loosening. This explains the implant&rsquo;s
+        cavitation and resulting weakness.
+      </div>
+    </div>
+    <div class="figure-col figs-1">
+      <figure class="fig"><img src="images/hip-osteolysis-progression.jpeg" alt="Progression of osteolysis diagram"><figcaption>Progression of osteolysis: replacement procedure &rarr; biological reaction to particle debris &rarr; debris buildup in joint capsule &rarr; aseptic loosening and osteolysis</figcaption></figure>
+    </div>
+  </div>
+  <div class="foot-rule"></div>
+  <div class="pagenum">12</div>
+</section>
+
+<!-- 13: CASE — DESIGN RESPONSE -->
+<section class="slide">
+  <div class="head">
+    <div>
+      <div class="eyebrow">03 &middot; Case Study</div>
+      <h2>Design Response &mdash; Implant &amp; Materials</h2>
+    </div>
+    <div class="pageno">2022 &mdash; Hip Implant</div>
+  </div>
+  <div class="body-grid wide-text">
+    <div class="text-col">
+      <span class="stage-tag">Design Response</span>
+      <p>
+        The new implant uses novel layered materials to strike balances between
+        biocompatibility and wear resistance (in the femoral head and acetabular
+        cup), and ultimate strength and bone density reduction (in the stem). A
+        spring connects the femoral head to the stem, removing mechanical load and
+        absorbing shock.
+      </p>
+      <div class="materials-block">
+        <h4>Coatings &amp; Combinations</h4>
+        <p>
+          316 Stainless Steel interior of femoral stem coated with Porous Tantalum
+          of high ultimate strength; Zirconia Toughened Alumina (ZTA) acts as a
+          protective coating on the femoral head; acetabular cup is lined with
+          Highly Crosslinked Polyethylene (XLPE) against a Porous Tantalum cup.
+        </p>
+      </div>
+      <div class="materials-block">
+        <h4>Spring</h4>
+        <p>Cobalt Chromium alloy, chosen for high corrosion resistance and biocompatibility.</p>
+      </div>
+      <div class="takeaway">
+        <b>Takeaway:</b> cup-and-liner implant using Porous Tantalum, 316L
+        steel, ZTA, and XLPE for bone-stiffness matching and wear resistance,
+        with a Co-Cr spring absorbing compressive load.
+      </div>
+    </div>
+    <div class="figure-col figs-mix">
+      <figure class="fig tall"><img src="images/hip-cad-assembly.jpeg" alt="CAD assembly of hip implant"><figcaption>CAD assembly &mdash; cup-and-liner, spring, and stem</figcaption></figure>
+      <figure class="fig"><img src="images/hip-cad-stem.jpeg" alt="CAD render of femoral stem"><figcaption>Femoral stem CAD render</figcaption></figure>
+      <figure class="fig"><img src="images/hip-materials-table.jpeg" alt="Materials selection table"><figcaption>Materials selection by component</figcaption></figure>
+    </div>
+  </div>
+  <div class="foot-rule"></div>
+  <div class="pagenum">13</div>
+</section>
+
+<!-- 14: CASE — MATERIALS JUSTIFICATION I -->
+<section class="slide">
+  <div class="head">
+    <div>
+      <div class="eyebrow">03 &middot; Case Study</div>
+      <h2>Materials Justification &mdash; Structural Metals &amp; Ceramic</h2>
+    </div>
+    <div class="pageno">2022 &mdash; Hip Implant</div>
+  </div>
+  <div class="body-grid wide-text">
+    <div class="text-col">
+      <div class="materials-block">
+        <h4>Porous Tantalum</h4>
+        <p>
+          Preserves bone strength and density over long-term recovery periods;
+          nearly identical elastic modulus to accurately mimic bone stiffness,
+          reducing bone loss.
+        </p>
+      </div>
+      <div class="materials-block">
+        <h4>Stainless Steel 316L</h4>
+        <p>
+          Compensates for the lack of initial stiffness of Porous Tantalum with a
+          higher elastic modulus than titanium; long-lasting reliability in
+          biocompatibility and corrosion resistance.
+        </p>
+      </div>
+      <div class="materials-block">
+        <h4>ZTA &mdash; Zirconia Toughened Alumina</h4>
+        <p>
+          Resistant to increased corrosion with low brittleness, reducing
+          fracture; high elastic modulus, limiting implant stress.
+        </p>
+      </div>
+      <div class="takeaway">
+        <b>Takeaway:</b> the stem and femoral head pair a bone-matching Porous
+        Tantalum / Stainless Steel 316L structure with a ZTA wear surface,
+        chosen for elastic-modulus matching and corrosion resistance.
+      </div>
+    </div>
+    <div class="figure-col figs-1">
+      <figure class="fig"><img src="images/hip-zta-crystal-states.jpeg" alt="ZTA tetragonal and monoclinic crystal states"><figcaption>ZTA tetragonal vs. monoclinic crystal states</figcaption></figure>
+    </div>
+  </div>
+  <div class="foot-rule"></div>
+  <div class="pagenum">14</div>
+</section>
+
+<!-- 15: CASE — MATERIALS JUSTIFICATION II -->
+<section class="slide">
+  <div class="head">
+    <div>
+      <div class="eyebrow">03 &middot; Case Study</div>
+      <h2>Materials Justification &mdash; Bearing Surface &amp; Surgery</h2>
+    </div>
+    <div class="pageno">2022 &mdash; Hip Implant</div>
+  </div>
+  <div class="body-grid wide-text">
+    <div class="text-col">
+      <div class="materials-block">
+        <h4>XLPE &mdash; Highly Crosslinked Polyethylene</h4>
+        <p>
+          1200 GPa ultimate strength with reduced particle debris; crosslinked
+          property minimizes wear, reducing inflammation.
+        </p>
+      </div>
+      <div class="materials-block">
+        <h4>Spring &amp; Phynox</h4>
+        <p>
+          Absorbs shock from compressive stress on the implant by removing
+          mechanical load; a stiffer spring accounts for increased weight,
+          decreasing compression. Extremely high corrosion wear and fatigue life.
+        </p>
+      </div>
+      <div class="materials-block">
+        <h4>Surgical Considerations</h4>
+        <p>
+          Cemented implant fixation mimics natural bone, keeping the implant
+          stable where reduced bone mass cannot otherwise hold it. Pre-op:
+          weight loss. Operative: posterior approach, bariatric equipment, IV
+          antibiotics. Post-op: higher nursing vigilance, epidural
+          anesthetics, physiotherapy.
+        </p>
+      </div>
+    </div>
+    <div class="figure-col figs-1">
+      <figure class="fig"><img src="images/hip-material-microstructure.png" alt="Cell adhesion and bone tissue scaffold microstructure"><figcaption>Cell adhesion and bone tissue scaffold microstructure, Ti6Al4V vs. Ta</figcaption></figure>
+    </div>
+  </div>
+  <div class="foot-rule"></div>
+  <div class="pagenum">15</div>
+</section>
+
+<!-- 16: CLOSING -->
+<section class="slide slide--title">
+  <div class="title-frame">
+    <div>
+      <div class="kicker">Reference Deck</div>
+      <h1>Thank You</h1>
+      <p class="framing">
+        This deck traces hands-on work across medical imaging physics, biosignal
+        instrumentation, and orthopedic device design. Further detail on any
+        section &mdash; methods, data, or design rationale &mdash; is available on
+        request.
+      </p>
+    </div>
+    <div>
+      <div class="byline">Jacky Nam</div>
+      <div class="contact">
+        Edu: <a href="mailto:namj10@mcmaster.ca">namj10@mcmaster.ca</a><br>
+        Personal: <a href="mailto:jackynam@outlook.com">jackynam@outlook.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
