@@ -78,7 +78,7 @@ a:hover { color: var(--orange); text-decoration-color: var(--orange); }
 }
 .nav__name {
   font-weight: 700;
-  font-size: 1.6rem;
+  font-size: 1.75rem;
   color: var(--text);
   text-decoration: none;
 }
@@ -345,7 +345,7 @@ a:hover { color: var(--orange); text-decoration-color: var(--orange); }
   body { font-size: 0.98rem; }
   h1 { font-size: 1.45rem; }
   .page { padding-top: 3.5rem; }
-  .nav__name { font-size: 1.35rem; }
+  .nav__name { font-size: 1.45rem; }
   .cform__row { flex-direction: column; align-items: stretch; }
   .cform__send { width: 100%; }
   .deck__actions { align-items: stretch; flex-direction: column; gap: 0.9rem; }
