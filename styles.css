@@ -14,7 +14,7 @@
   --yellow: #b16803;
   --red:    #ce4770;
 
-  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-sans: "Gelasio", Georgia, "Times New Roman", serif;
   --font-mono: "JetBrains Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
 
   --maxw: 880px;
@@ -26,6 +26,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 2rem; -webkit-text-size-adju
 
 body {
   font-family: var(--font-sans);
+  font-weight: 600;
   font-size: 1.02rem;
   background: var(--bg);
   color: var(--body);
@@ -48,7 +49,7 @@ h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 1rem; }
 h3 { font-size: 1rem;  font-weight: 600; }
 
 p + p { margin-top: 1rem; }
-strong { color: var(--text); font-weight: 600; }
+strong { color: var(--text); font-weight: 700; }
 em { color: var(--orange); font-style: normal; }
 
 a {
@@ -158,6 +159,7 @@ a:hover { color: var(--orange); text-decoration-color: var(--orange); }
   border-radius: 8px;
   color: var(--text);
   font-family: var(--font-sans);
+  font-weight: 400;
   font-size: 0.98rem;
   padding: 0.7rem 0.85rem;
   transition: border-color 0.2s, box-shadow 0.2s;
