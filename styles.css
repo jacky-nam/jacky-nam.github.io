@@ -278,7 +278,6 @@ a:hover { color: var(--orange); text-decoration-color: var(--orange); }
   font-size: 0.94rem;
   text-align: center;
 }
-.deck__note { margin-top: 0.9rem; font-size: 0.72rem; }
 
 /* projects page: project cards */
 
