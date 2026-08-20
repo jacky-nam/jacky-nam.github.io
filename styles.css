@@ -95,6 +95,7 @@ a:hover { color: var(--orange); text-decoration-color: var(--orange); }
 .intro__links {
   margin-top: 2.4rem;
   display: flex;
+  align-items: center;
   gap: 1.8rem;
   flex-wrap: wrap;
 }
@@ -114,12 +115,27 @@ a:hover { color: var(--orange); text-decoration-color: var(--orange); }
 .nav__links a:hover { color: var(--orange); border-color: var(--orange); }
 .nav__links a.is-here { color: var(--body); border-color: transparent; }
 
-.intro__links a.icon-link,
-.nav__links a.icon-link {
+.intro__links a.icon-link {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   border-bottom: none;
   padding-bottom: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  color: var(--green);
+  transition: color 0.2s, border-color 0.2s;
+}
+.intro__links a.icon-link:hover,
+.intro__links a.icon-link:focus-visible {
+  color: var(--green);
+  border-color: var(--green);
+}
+.intro__links a.icon-link:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
 }
 .icon-link svg { width: 16px; height: 16px; fill: currentColor; }
 
