@@ -9,17 +9,29 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Gelasio:wght@400;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@400&family=Inter:wght@300;600&family=JetBrains+Mono:wght@400;500;600&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=14" />
+  <link rel="stylesheet" href="styles.css?v=38" />
 </head>
 
 <body>
 
   <div class="page" id="top">
 
-    <header class="nav">
-      <a class="nav__name" href="index.html">Jacky Nam</a>
+    <header class="nav nav--home">
+      <div class="nav__id">
+        <a class="nav__name" href="index.html">Jacky Nam</a>
+      </div>
+      <span class="cat">
+        <img class="cat__art" src="cat.png" alt="" width="340" height="135" aria-hidden="true" />
+        <a class="icon-link" href="https://www.linkedin.com/in/jacky-nam" target="_blank" rel="noopener"
+          aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path
+              d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z" />
+          </svg>
+        </a>
+      </span>
     </header>
 
     <main>
@@ -30,31 +42,50 @@
           <span class="mono">Always looking for research opportunities</span>
         </p>
         <h1 class="reveal">Interested in electrophysiology.</h1>
-        <p class="reveal">
-          I'm an engineer who found an interest in medical physics navigating through my Electrical & Biomedical
-          Engineering degree at McMaster University. I'm interested in edge computing, signal processing and filter
-          design along with various ways ML can be applied to enhance image quality. Lots to learn.<br><br>
-
-          I was previously a Neuroscience & Psychology student that was
-          frustrated with the lack of real-world application of what was taught and what I could make and
-          implement so I pivoted into engineering. The change has definitely been fun.<br><br>
-
-          Right now my interests have led me to focus on medical imaging learning,
-          configuring components of <a href="ReferenceDeck.pdf" target="_blank" rel="noopener">ultrasound imaging systems</a> for
-          optimization using open-source materials.
-        </p>
+        <div class="blocks">
+          <section class="block reveal">
+            <h2 class="block__label mono">01 / now</h2>
+            <div>
+              <p>Focused on learning first principles of medical imaging modalities.
+                Preparation for an ultrasound-centered senior engineering project.</p>
+              <p>Engineering @ AeroCardia</p>
+            </div>
+          </section>
+          <section class="block reveal">
+            <h2 class="block__label mono">02 / background</h2>
+            <ol class="tl">
+              <li>
+                <b><span class="tl__subject">Urgent Care Clinic Admin / Pharmaceutical Assistant</span> @ Markham-Stouffville Hospital</b>
+              </li>
+              <li>
+                <b><span class="tl__subject">Neuroscience &amp; Psychology</span> @ McMaster University</b>
+                <span>Frustrated with the lack of real-world application of what was taught</span>
+                <span>Pivot into engineering</span>
+              </li>
+              <li>
+                <b><span class="tl__subject">Electrical &amp; Biomedical Engineering</span> @ McMaster University</b>
+                <span>Formula SAE</span>
+                <span>Biomedical Engineering Showcase 1x</span>
+                <span>Medical Imaging Undergrad. Course Developer</span>
+              </li>
+              <li class="now">
+                <b><span class="tl__subject">AeroCardia</span></b>
+                <span>$12M valuation</span>
+                <span>Respiration diagnostics medtech company</span>
+              </li>
+            </ol>
+          </section>
+          <section class="block reveal">
+            <h2 class="block__label mono">03 / interests</h2>
+            <p>I'm interested in edge computing, signal processing and filter
+              design along with various ways machine learning can aid practitioners in patient critical situations. Lots to learn.</p>
+          </section>
+        </div>
 
         <nav class="intro__links reveal" aria-label="Pages">
           <a href="work-in-progress.html">work in progress</a>
           <a href="portfolio.html">portfolio</a>
-          <a href="contact.html">contact</a>
-          <a class="icon-link" href="https://www.linkedin.com/in/jacky-nam" target="_blank" rel="noopener"
-            aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <path
-                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z" />
-            </svg>
-          </a>
+          <a href="mailto:jackynam@outlook.com">contact</a>
         </nav>
 
         <p class="tools mono reveal">
@@ -67,7 +98,7 @@
 
   </div>
 
-  <script src="script.js?v=8"></script>
+  <script src="script.js?v=9"></script>
 </body>
 
 </html>
