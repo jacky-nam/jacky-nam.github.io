@@ -425,3 +425,14 @@ a.icon-link:focus-visible {
 .section.block { margin-top: 0; padding: 1.6rem 0; border-top: 1px solid var(--line); }
 main > .section.block:last-child { border-bottom: 1px solid var(--line); }
 @media (max-width: 600px) { .block { grid-template-columns: 1fr; gap: 0.3rem; } }
+
+.tl { list-style: none; }
+.tl li b { display: block; font-family: var(--font-display); font-weight: 400; font-size: 1.05rem; letter-spacing: -0.02em; color: var(--text); }
+.tl li span { display: block; }
+.tl li.now b { color: var(--accent); }
+
+.tl { border-left: 1px solid var(--line); margin-left: 5px; padding-left: 1.4rem; }
+.tl li { position: relative; padding-bottom: 1.3rem; }
+.tl li:last-child { padding-bottom: 0; }
+.tl li::before { content: ""; position: absolute; left: calc(-1.4rem - 5px); top: 0.5rem; width: 9px; height: 9px; background: var(--bg); border: 1px solid var(--accent); }
+.tl li.now::before { background: var(--accent); }
