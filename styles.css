@@ -6,7 +6,7 @@
   --line:    #30312b;
 
   --text:  #f0f1e9;
-  --body:  #a0a196;
+  --body:  #d9dacd;
   --faint: #88897f;
 
   --accent: #fbffc9;
@@ -45,9 +45,9 @@ body {
 img, svg, canvas { display: block; max-width: 100%; }
 
 h1, h2, h3 { font-family: var(--font-display); color: var(--text); line-height: 1.25; letter-spacing: -0.02em; }
-h1 { font-size: 1.7rem; font-weight: 600; letter-spacing: -0.05em; }
-h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 1rem; }
-h3 { font-size: 1rem;  font-weight: 600; }
+h1 { font-size: 1.7rem; font-weight: 400; letter-spacing: -0.05em; }
+h2 { font-size: 1.15rem; font-weight: 400; margin-bottom: 1rem; }
+h3 { font-size: 1rem;  font-weight: 400; }
 
 p + p { margin-top: 1rem; }
 strong { color: var(--text); font-weight: 600; }
@@ -80,7 +80,7 @@ a:hover { color: var(--orange); text-decoration-color: var(--orange); }
 .nav__name {
   font-family: var(--font-display);
   letter-spacing: -0.05em;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 1.75rem;
   color: var(--text);
   text-decoration: none;
