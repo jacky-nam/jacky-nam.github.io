@@ -124,15 +124,13 @@ a:hover { color: var(--orange); text-decoration-color: var(--orange); }
 }
 .intro__links a:hover,
 .nav__links a:hover { color: var(--orange); border-color: var(--orange); }
-/* Individual, unconnected rectangular labels, inverted: lemon fill, black text. */
+/* Link labels: individual, unconnected rectangles.
+   Home page links: faint lemon tile. Nav links on inner pages: inverted (lemon fill, black text). */
 .intro__links a:not(.icon-link),
-.nav__links a {
-  background: var(--accent);
-  color: var(--bg);
-  border-bottom-color: transparent;
-  padding: 2px 0.55rem;
-}
-.intro__links a:not(.icon-link):hover,
+.nav__links a { padding: 2px 0.55rem; border-bottom-color: transparent; }
+.intro__links a:not(.icon-link) { background: rgba(251, 255, 201, 0.07); }
+.intro__links a:not(.icon-link):hover { background: rgba(242, 101, 34, 0.12); }
+.nav__links a { background: var(--accent); color: var(--bg); }
 .nav__links a:hover { background: var(--orange); color: var(--bg); border-bottom-color: transparent; }
 /* current page: not a link target, so it stays a quiet faint tile */
 .nav__links a.is-here { background: rgba(251, 255, 201, 0.07); color: var(--body); border-color: transparent; }
@@ -173,10 +171,10 @@ a:hover { color: var(--orange); text-decoration-color: var(--orange); }
 .tools::before {
   content: "";
   display: block;
-  width: 2.5rem;
+  width: 5rem;
   height: 2px;
   background: var(--accent);
-  margin-bottom: 0.9rem;
+  margin: 0 auto 0.9rem;
 }
 
 .reveal {
@@ -414,3 +412,14 @@ a:hover { color: var(--orange); text-decoration-color: var(--orange); }
   *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* labelled blocks: mono label column + content column, hairline rules */
+.blocks { margin-top: 1.6rem; }
+.block { display: grid; grid-template-columns: 11rem 1fr; gap: 1rem; padding: 1.4rem 0; border-top: 1px solid var(--line); }
+.blocks .block:last-child { border-bottom: 1px solid var(--line); }
+.block__label { font-size: 0.78rem; font-weight: 400; margin: 0; color: var(--accent); line-height: 1.75; letter-spacing: 0.04em; }
+.block__body, .block > div { min-width: 0; }
+.block__body > p + p, .block > div > p + p { margin-top: 1rem; }
+.section.block { margin-top: 0; padding: 1.6rem 0; border-top: 1px solid var(--line); }
+main > .section.block:last-child { border-bottom: 1px solid var(--line); }
+@media (max-width: 600px) { .block { grid-template-columns: 1fr; gap: 0.3rem; } }
