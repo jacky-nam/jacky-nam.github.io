@@ -87,7 +87,15 @@ a:hover { color: var(--orange); text-decoration-color: var(--orange); }
 }
 .nav__name:hover { color: var(--orange); }
 
-.intro h1 { margin: 0.9rem 0 1.1rem; }
+.intro h1 {
+  margin: 0.9rem 0 1.1rem;
+  /* inverted rectangular highlight, matching the link labels */
+  width: fit-content;
+  max-width: 100%;
+  background: var(--accent);
+  color: var(--bg);
+  padding: 0.1em 0.45em 0.15em;
+}
 .intro__hello { display: flex; align-items: center; gap: 0.6rem; }
 .dot {
   width: 7px; height: 7px; border-radius: 50%;
