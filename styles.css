@@ -27,7 +27,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 2rem; -webkit-text-size-adju
 
 body {
   font-family: var(--font-sans);
-  font-weight: 400;
+  font-weight: 300;
   font-size: 1.02rem;
   background: var(--bg);
   color: var(--body);
@@ -77,7 +77,7 @@ a:hover { color: var(--orange); text-decoration-color: var(--orange); }
   flex-wrap: wrap;
   padding-bottom: 1.4rem;
 }
-.nav__id { display: flex; align-items: center; gap: 0.9rem; }
+.nav__id { display: flex; align-items: baseline; gap: 0.9rem; }
 .nav__name {
   font-family: var(--font-display);
   letter-spacing: -0.05em;
@@ -108,6 +108,7 @@ a:hover { color: var(--orange); text-decoration-color: var(--orange); }
   margin-top: 2.4rem;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 1.8rem;
   flex-wrap: wrap;
 }
