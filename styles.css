@@ -105,12 +105,24 @@ a:hover { color: var(--orange); text-decoration-color: var(--orange); }
 }
 
 .intro__links {
+  position: relative;
+  padding-top: 1.5rem;
   margin-top: 2.4rem;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1.8rem;
   flex-wrap: wrap;
+}
+.intro__links::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5rem;
+  height: 2px;
+  background: var(--accent);
 }
 .nav__links { display: flex; gap: 1.8rem; flex-wrap: wrap; }
 .intro__links a,
