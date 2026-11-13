@@ -5,8 +5,8 @@
   --surface: #1f201c;
   --line:    #30312b;
 
-  --text:  #f0f1e9;
-  --body:  #d9dacd;
+  --text:  #ffffff;
+  --body:  #ffffff;
   --faint: #88897f;
 
   --accent: #fbffc9;
@@ -83,7 +83,7 @@ a:hover { color: var(--orange); text-decoration-color: var(--orange); }
 .nav > .cat { margin-bottom: 0.2rem; }
 .cat { position: relative; display: inline-block; line-height: 0; width: 7.5rem; }
 .cat__art { width: 100%; height: auto; }
-.cat a.icon-link { position: absolute; left: 57%; top: 44%; width: 18px; height: 18px; }
+.cat a.icon-link { position: absolute; left: 57%; top: 36%; width: 18px; height: 18px; }
 .cat a.icon-link::after { content: ""; position: absolute; inset: -4px; }
 .cat a.icon-link svg { width: 11px; height: 11px; }
 .nav__name {
