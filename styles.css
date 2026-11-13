@@ -10,6 +10,7 @@
   --faint: #88897f;
 
   --accent: #fbffc9;
+  --accent-deep: #b8c23d; /* deeper step of the same lemon hue; the divider stubs */
   --orange: #f26522;
   --yellow: #ffcf33;
   --red:    #ff4d6d;
@@ -352,6 +353,15 @@ a.icon-link:focus-visible {
 .blocks { margin-top: 1.6rem; }
 .block { display: grid; grid-template-columns: 11rem 1fr; gap: 1rem; padding: 1.4rem 0; border-top: 1px solid var(--line); }
 .blocks .block:last-child { border-bottom: 1px solid var(--line); }
+.blocks .block { position: relative; }
+/* Stub on the border-top line, as wide as its mono label: N chars (letter-spacing included). Change --stub-n if a label's length changes. */
+.blocks .block::before {
+  content: ""; position: absolute; top: -1px; left: 0; height: 1px; background: var(--accent-deep);
+  font: 0.78rem var(--font-mono); letter-spacing: 0.04em; width: calc(var(--stub-n) * (1ch + 0.04em));
+}
+.blocks .block:nth-child(1) { --stub-n: 8; }
+.blocks .block:nth-child(2) { --stub-n: 15; }
+.blocks .block:nth-child(3) { --stub-n: 14; }
 .block__label { font-size: 0.78rem; font-weight: 400; margin: 0; color: var(--accent); line-height: 1.75; letter-spacing: 0.04em; }
 .block__body, .block > div { min-width: 0; }
 .block__body > p + p, .block > div > p + p { margin-top: 1rem; }
