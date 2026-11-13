@@ -81,7 +81,7 @@ a:hover { color: var(--orange); text-decoration-color: var(--orange); }
 /* sleeping-cat line art curled around the LinkedIn badge; its ground line sits on the name's baseline */
 .cat { position: relative; display: inline-block; line-height: 0; width: 10.5rem; }
 .cat__art { width: 100%; height: auto; }
-.cat a.icon-link { position: absolute; left: 66%; top: 41%; width: 22px; height: 22px; }
+.cat a.icon-link { position: absolute; left: 57%; top: 44%; width: 22px; height: 22px; }
 .cat a.icon-link svg { width: 13px; height: 13px; }
 .nav__name {
   font-family: var(--font-display);
