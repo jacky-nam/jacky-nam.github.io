@@ -1,0 +1,2 @@
+# This site is static and served by GitHub Pages. It has no CI.
+no_ci: true
