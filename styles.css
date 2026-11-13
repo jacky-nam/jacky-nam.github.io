@@ -82,7 +82,7 @@ a:hover { color: var(--orange); text-decoration-color: var(--orange); }
   font-family: var(--font-display);
   letter-spacing: -0.05em;
   font-weight: 400;
-  font-size: 2.1rem;
+  font-size: 2.5rem;
   color: var(--text);
   text-decoration: none;
 }
@@ -399,7 +399,7 @@ a.icon-link:focus-visible {
   body { font-size: 0.98rem; }
   h1 { font-size: 1.45rem; }
   .page { padding-top: 3.5rem; }
-  .nav__name { font-size: 1.75rem; }
+  .nav__name { font-size: 2rem; }
   .cform__row { flex-direction: column; align-items: stretch; }
   .cform__send { width: 100%; }
   .deck__actions { align-items: stretch; flex-direction: column; gap: 0.9rem; }
