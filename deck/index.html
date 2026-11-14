@@ -12,22 +12,25 @@
   <div class="title-frame">
     <div>
       <div class="kicker">Reference Deck</div>
-      <h1>Biomedical Imaging, Instrumentation &amp; Device Design</h1>
+      <h1>Biomedical Imaging, Instrumentation, Sensor Characterisation and Device Design</h1>
       <p class="framing">
-        A working reference of graduate project and lab work spanning medical imaging
-        physics, biosignal instrumentation, and orthopedic device design: hands-on
-        modality work across X-ray/CT, ultrasound, and MRI systems with Fourier-based
-        reconstruction and image-quality analysis; EEG hardware built and validated
-        against clinical-reference equipment; and a hip implant redesign carried from
-        clinical problem to biomaterial selection.
+        Project and lab work in four areas. Sensor characterisation: firmware, a
+        capture protocol and paired MATLAB and Python analysis, with 283 kept runs.
+        Medical imaging: X-ray/CT, ultrasound and MRI acquisition on four lab
+        systems, with reconstruction and PSF, LSF and MTF analysis in MATLAB and
+        Python. EEG instrumentation: a front-end on the BioAmp EXG Pill, compared
+        with clinical reference EEG at McMaster LiveLAB. Device design: a hip
+        implant redesign from the diagnosis of aseptic periprosthetic osteolysis
+        to materials selection.
       </p>
       <div class="scope-list">
-        <div><b>Medical Imaging</b>X-ray/CT, ultrasound, MRI &mdash; acquisition, reconstruction, and image-quality analysis</div>
+        <div><b>Sensor Characterisation</b>Firmware, capture protocol and analysis for motion, pressure and breath-gas sensors</div>
+        <div><b>Medical Imaging</b>Acquisition, reconstruction and image-quality analysis on <span class="nowrap">X-ray/CT</span>, ultrasound and MRI</div>
         <div><b>Instrumentation</b>EEG front-end design, built and bench-tested against clinical reference hardware</div>
         <div><b>Device Design</b>Case study: hip implant redesign from diagnosis to materials selection</div>
       </div>
     </div>
-    <div>
+    <div class="signoff">
       <div class="byline">Jacky Nam</div>
       <div class="contact">
         Edu: <a href="mailto:namj10@mcmaster.ca">namj10@mcmaster.ca</a><br>
@@ -37,80 +40,425 @@
   </div>
 </section>
 
-<!-- 2: SECTION DIVIDER — IMAGING -->
+<!-- 2: SECTION DIVIDER, SENSOR CHARACTERISATION -->
 <section class="slide slide--section">
   <div class="num">01</div>
-  <h2>Medical Imaging Systems</h2>
+  <h2>Sensor Characterisation Bench</h2>
   <p>
-    Experimental and diagnostic work performed with DeskCAT (simulated X-ray/CT),
-    Clarius L15 and C3 (ultrasound), the Earth&rsquo;s Field MRI apparatus (NMR),
-    and the 0.345T ilumr MRI system &mdash; applying Fourier-transform theory to
-    image formation, reconstruction, and analysis in MATLAB and Python.
+    2026. A bench that characterises one motion sensor, three pressure sensors
+    and one breath-gas sensor on a single microcontroller: 21 firmware releases,
+    283 kept runs, three issued technical reports, and a Bluetooth Low Energy
+    stream with microSD logging.
   </p>
+  <p class="updated">Last Updated: 14 November 2026</p>
 </section>
 
-<!-- 3: INSTRUMENTATION OVERVIEW -->
+<!-- 3: SENSOR, ACQUISITION, TECHNIQUE -->
 <section class="slide">
   <div class="head">
     <div>
-      <div class="eyebrow">01 &middot; Medical Imaging</div>
-      <h2>Lab Instrumentation</h2>
+      <div class="eyebrow">01 &middot; Sensor Characterisation</div>
+      <h2>Acquisition: One Clock, One Row</h2>
     </div>
-    <div class="pageno">Imaging Systems</div>
+    <div class="pageno">2026 &middot; Technique</div>
   </div>
   <div class="body-grid">
     <div class="text-col">
-      <p class="label">Systems Used</p>
-      <p>Experimental and diagnostic work performed with the following systems:</p>
-      <ul class="list-plain">
-        <li>DeskCAT for simulated X-ray and CT</li>
-        <li>Clarius L15 and C3 for ultrasound</li>
-        <li>Earth&rsquo;s Field MRI apparatus for NMR</li>
-        <li>0.345T ilumr system for MRI</li>
-      </ul>
+      <p>
+        A fixed-rate scheduler reads every sensor inside one 10 ms tick, so all
+        channels share one time base.
+      </p>
+      <p>
+        Each pressure sensor signals a finished conversion by interrupt. The row
+        stores the count and the time of that conversion, which separates the
+        timing of the sensor from the timing of the loop.
+      </p>
       <div class="takeaway">
-        <b>Takeaway:</b> hands-on operation of four distinct imaging modalities &mdash;
-        projection X-ray/CT, handheld ultrasound, and two MRI/NMR platforms &mdash;
-        spanning benchtop teaching systems to a clinical-field-strength scanner.
+        <b>Takeaway:</b> one row format of 29 columns at 100 Hz, with every value
+        stamped at its source on the microcontroller clock.
       </div>
     </div>
-    <div class="figure-col figs-2x2">
-      <figure class="fig"><img src="images/instr-deskcat.jpeg" alt="DeskCAT simulated X-ray/CT scanner"><figcaption>DeskCAT &mdash; simulated X-ray/CT scanner with phantom insert</figcaption></figure>
-      <figure class="fig"><img src="images/instr-clarius-l15.jpeg" alt="Clarius handheld ultrasound probe"><figcaption>Clarius handheld ultrasound transducer (L15/C3 series)</figcaption></figure>
-      <figure class="fig"><img src="images/instr-efmri.jpeg" alt="Earth's Field MRI apparatus"><figcaption>Earth&rsquo;s Field MRI apparatus &mdash; NMR coil assembly</figcaption></figure>
-      <figure class="fig"><img src="images/instr-ilumr.jpeg" alt="ilumr 0.345T MRI system"><figcaption>0.345T ilumr MRI system</figcaption></figure>
+    <div class="figure-col figs-1">
+      <figure class="fig">
+        <svg viewBox="0 0 640 320" role="img" aria-label="Block diagram of the bench">
+          <rect width="640" height="320" fill="#fff"/>
+          <g fill="#f4f5f6" stroke="#111417" stroke-width="1.5">
+            <rect x="250" y="110" width="140" height="100"/>
+            <rect x="30" y="30" width="150" height="44"/><rect x="30" y="100" width="150" height="44"/>
+            <rect x="30" y="176" width="150" height="44"/><rect x="30" y="246" width="150" height="44"/>
+            <rect x="460" y="30" width="150" height="44"/><rect x="460" y="138" width="150" height="44"/><rect x="460" y="246" width="150" height="44"/>
+          </g>
+          <g fill="none" stroke="#7a1f2b" stroke-width="1.5">
+            <path d="M180 52H215V140H250"/><path d="M180 122H215"/>
+            <path d="M180 198H215V180H250"/><path d="M180 268H215V198"/>
+            <path d="M390 130H425V52H460"/><path d="M390 160H460"/><path d="M390 190H425V268H460"/>
+          </g>
+          <g font-size="13" fill="#111417" text-anchor="middle">
+            <text x="320" y="155" font-weight="700">Microcontroller</text><text x="320" y="174" font-size="11" fill="#55606a">100 Hz scheduler</text>
+            <text x="105" y="57">Motion sensor</text><text x="105" y="127">Pressure, tap 1</text>
+            <text x="105" y="203">Pressure, taps 2 and 3</text><text x="105" y="273">Breath-gas sensor</text>
+            <text x="535" y="57">USB to host</text><text x="535" y="165">Bluetooth LE</text><text x="535" y="273">microSD log</text>
+          </g>
+          <g font-size="10" fill="#7a1f2b"><text x="188" y="92">I2C bus 1</text><text x="188" y="240">I2C bus 2</text></g>
+        </svg>
+        <figcaption>Block diagram: sensors, buses and the three output paths</figcaption>
+      </figure>
     </div>
   </div>
   <div class="foot-rule"></div>
   <div class="pagenum">3</div>
 </section>
 
-<!-- 4: CT / X-RAY -->
+<!-- 4: SENSOR, ACQUISITION, APPLICATION -->
 <section class="slide">
   <div class="head">
     <div>
-      <div class="eyebrow">01 &middot; Medical Imaging</div>
-      <h2>X-Ray &amp; CT &mdash; Reconstruction and Image Quality</h2>
+      <div class="eyebrow">01 &middot; Sensor Characterisation</div>
+      <h2>Acquisition: The Bench as Built</h2>
     </div>
-    <div class="pageno">Fourier Theory &middot; PSF/MTF</div>
+    <div class="pageno">2026 &middot; Application</div>
   </div>
   <div class="body-grid">
     <div class="text-col">
       <p>
-        Applied Fourier transform theory to medical image formation, reconstruction,
-        and analysis across multiple imaging modalities using MATLAB/Python scripting.
-        CT/X-ray work shown here on a resolution phantom.
+        Constraint: three identical pressure sensors offer only two bus addresses.
+        They are split across two I2C buses, one alone on the first bus and two on
+        the second with one address jumper changed.
       </p>
-      <p>Analyzed sources of noise, artifacts, and resolution limits in X-ray and CT.</p>
       <p>
-        Evaluated image quality metrics (PSF, MTF) and QA/QC phantom calibration
-        standards for clinical imaging systems.
+        Constraint: a movement must repeat exactly between runs. A stepper rig
+        records its angle in every row, and a 3D printer repeats a linear stroke
+        on one axis at a time.
       </p>
       <div class="takeaway">
-        <b>Takeaway:</b> phantom X-ray/CT acquisition on DeskCAT, MATLAB/Python
-        reconstruction, and quantitative PSF/MTF/LSF calibration analysis against
-        QA/QC phantom standards.
+        <b>Takeaway:</b> 21 released versions of the combined firmware, each with a
+        change log, on one printed housing.
       </div>
+    </div>
+    <div class="figure-col figs-2">
+      <figure class="fig"><img src="images/bench-assembly-side.jpg" alt="Sensor assembly on the printed housing, side view"><figcaption>Sensor assembly on the printed housing</figcaption></figure>
+      <figure class="fig"><img src="images/bench-assembly-top.jpg" alt="Sensor assembly seen from above"><figcaption>Assembly from above, with the microcontroller board</figcaption></figure>
+    </div>
+  </div>
+  <div class="foot-rule"></div>
+  <div class="pagenum">4</div>
+</section>
+
+<!-- 5: SENSOR, CHARACTERISATION, TECHNIQUE -->
+<section class="slide">
+  <div class="head">
+    <div>
+      <div class="eyebrow">01 &middot; Sensor Characterisation</div>
+      <h2>Characterisation: The Method</h2>
+    </div>
+    <div class="pageno">2026 &middot; Technique</div>
+  </div>
+  <div class="body-grid">
+    <div class="text-col">
+      <p>
+        The Allan deviation shows how long averaging still lowers the noise of a
+        sensor at rest. The minimum detectable change gives the smallest real
+        change that a run can show.
+      </p>
+      <p>
+        A motion run holds a baseline, a movement and a recovery in one record, so
+        detectability and recovery are measured against the same baseline.
+      </p>
+      <div class="takeaway">
+        <b>Takeaway:</b> one path from a position-checked capture to an issued
+        report, with every figure rebuilt from the stored record.
+      </div>
+    </div>
+    <div class="figure-col figs-1">
+      <figure class="fig">
+        <svg viewBox="0 0 640 320" role="img" aria-label="Flow from capture to report">
+          <rect width="640" height="320" fill="#fff"/>
+          <g fill="#f4f5f6" stroke="#111417" stroke-width="1.5">
+            <rect x="24" y="40" width="130" height="60"/><rect x="254" y="40" width="130" height="60"/><rect x="484" y="40" width="130" height="60"/>
+            <rect x="24" y="210" width="130" height="60"/><rect x="254" y="210" width="130" height="60"/><rect x="484" y="210" width="130" height="60"/>
+          </g>
+          <g stroke="#7a1f2b" stroke-width="1.5" fill="none">
+            <path d="M154 70H248"/><path d="M384 70H478"/><path d="M549 100V204"/><path d="M484 240H390"/><path d="M254 240H160"/>
+          </g>
+          <g fill="#7a1f2b"><path d="M254 70l-9-5v10z"/><path d="M484 70l-9-5v10z"/><path d="M549 210l-5-9h10z"/><path d="M384 240l9-5v10z"/><path d="M154 240l9-5v10z"/></g>
+          <g font-size="13" fill="#111417" text-anchor="middle">
+            <text x="89" y="66" font-weight="700">Capture</text><text x="89" y="84" font-size="11" fill="#55606a">position checked</text>
+            <text x="319" y="66" font-weight="700">Record</text><text x="319" y="84" font-size="11" fill="#55606a">raw rows + metadata</text>
+            <text x="549" y="66" font-weight="700">Analysis</text><text x="549" y="84" font-size="11" fill="#55606a">MATLAB and Python</text>
+            <text x="549" y="236" font-weight="700">Figures</text><text x="549" y="254" font-size="11" fill="#55606a">per run</text>
+            <text x="319" y="236" font-weight="700">Comparison</text><text x="319" y="254" font-size="11" fill="#55606a">across positions</text>
+            <text x="89" y="236" font-weight="700">Report</text><text x="89" y="254" font-size="11" fill="#55606a">issued and locked</text>
+          </g>
+          <g font-size="11" fill="#55606a" text-anchor="middle"><text x="319" y="150">noise floor &#183; Allan deviation &#183; drift &#183; timing</text><text x="319" y="168">detectability &#183; recovery</text></g>
+        </svg>
+        <figcaption>Method: from a checked capture to an issued report</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="foot-rule"></div>
+  <div class="pagenum">5</div>
+</section>
+
+<!-- 6: SENSOR, CHARACTERISATION, APPLICATION -->
+<section class="slide">
+  <div class="head">
+    <div>
+      <div class="eyebrow">01 &middot; Sensor Characterisation</div>
+      <h2>Characterisation: Applied to the Motion Sensor</h2>
+    </div>
+    <div class="pageno">2026 &middot; Application</div>
+  </div>
+  <div class="body-grid">
+    <div class="text-col">
+      <p>
+        Constraint: a result must be reproducible by another person on another
+        computer. Every analysis was written twice, in MATLAB and in Python, and
+        both write the same record.
+      </p>
+      <p>
+        283 runs are kept as raw rows with their metadata. 108 at-rest runs went
+        into the first report and 33 motion records into the second.
+      </p>
+      <div class="takeaway">
+        <b>Takeaway:</b> three technical reports issued, with units to IEC 60601-1
+        and a risk register in ISO 14971 terms.
+      </div>
+    </div>
+    <div class="figure-col figs-1">
+      <figure class="fig"><img src="images/bench-allan-deviation.png" alt="Allan deviation of the motion sensor at rest, three accelerometer axes and three gyroscope axes"><figcaption>Allan deviation of one at-rest run: three accelerometer axes, three gyroscope axes</figcaption></figure>
+    </div>
+  </div>
+  <div class="foot-rule"></div>
+  <div class="pagenum">6</div>
+</section>
+
+<!-- 7: SENSOR, FLOW, TECHNIQUE -->
+<section class="slide">
+  <div class="head">
+    <div>
+      <div class="eyebrow">01 &middot; Sensor Characterisation</div>
+      <h2>Flow: From Pressure to Volume</h2>
+    </div>
+    <div class="pageno">2026 &middot; Technique</div>
+  </div>
+  <div class="body-grid">
+    <div class="text-col">
+      <p>
+        Flow through a restriction follows the square root of the pressure
+        difference across it. The board applies that relation to a pair of
+        pressure taps in every row and sums the flow to a net volume.
+      </p>
+      <p>
+        The gas sensor reports 200 ms late. Its O2 and CO2 values are placed
+        200 ms earlier, so gas and flow describe the same instant.
+      </p>
+      <div class="takeaway">
+        <b>Takeaway:</b> flow, volume and gas concentration on one time base,
+        computed on the board and not afterwards on a computer.
+      </div>
+    </div>
+    <div class="figure-col figs-1">
+      <figure class="fig">
+        <svg viewBox="0 0 640 320" role="img" aria-label="Signal path from the flow tube to the outputs">
+          <rect width="640" height="320" fill="#fff"/>
+          <path d="M40 60H250L290 78H360L400 60H600V110H400L360 92H290L250 110H40Z" fill="#f4f5f6" stroke="#111417" stroke-width="1.5"/>
+          <g stroke="#7a1f2b" stroke-width="1.5"><path d="M130 60V30"/><path d="M325 78V30"/><path d="M520 60V30"/></g>
+          <g fill="#7a1f2b"><circle cx="130" cy="30" r="5"/><circle cx="325" cy="30" r="5"/><circle cx="520" cy="30" r="5"/></g>
+          <g font-size="11" fill="#55606a" text-anchor="middle"><text x="130" y="18">tap 1</text><text x="325" y="18">tap 2</text><text x="520" y="18">tap 3</text><text x="70" y="90">flow</text></g>
+          <path d="M88 86H110" stroke="#55606a" stroke-width="1.5"/><path d="M116 86l-8-4v8z" fill="#55606a"/>
+          <g fill="#f4f5f6" stroke="#111417" stroke-width="1.5">
+            <rect x="40" y="170" width="150" height="50"/><rect x="245" y="170" width="150" height="50"/><rect x="450" y="170" width="150" height="50"/>
+            <rect x="245" y="254" width="150" height="44"/><rect x="450" y="254" width="150" height="44"/>
+          </g>
+          <g stroke="#7a1f2b" stroke-width="1.5" fill="none"><path d="M115 110V164"/><path d="M190 195H239"/><path d="M395 195H444"/><path d="M525 220V248"/><path d="M450 276H401"/></g>
+          <g fill="#7a1f2b"><path d="M115 170l-5-9h10z"/><path d="M245 195l-9-5v10z"/><path d="M450 195l-9-5v10z"/><path d="M525 254l-5-9h10z"/><path d="M395 276l9-5v10z"/></g>
+          <g font-size="13" fill="#111417" text-anchor="middle">
+            <text x="115" y="200">Pressure difference</text><text x="320" y="200">Flow</text><text x="525" y="200">Volume per breath</text>
+            <text x="525" y="281">Bluetooth summary</text><text x="320" y="281">microSD, every row</text>
+          </g>
+        </svg>
+        <figcaption>Signal path: pressure taps to flow, volume and the two outputs</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="foot-rule"></div>
+  <div class="pagenum">7</div>
+</section>
+
+<!-- 8: SENSOR, FLOW AND RADIO, APPLICATION -->
+<section class="slide">
+  <div class="head">
+    <div>
+      <div class="eyebrow">01 &middot; Sensor Characterisation</div>
+      <h2>Flow: Streaming a Capture</h2>
+    </div>
+    <div class="pageno">2026 &middot; Application</div>
+  </div>
+  <div class="body-grid">
+    <div class="text-col">
+      <p>
+        Constraint: a radio link cannot carry every 100 Hz row. The board sends
+        flow and volume over Bluetooth Low Energy at 50 Hz and keeps every row on
+        the microSD card.
+      </p>
+      <p>
+        Constraint: a slow card write must never delay a sample. Rows wait in a
+        ring buffer and a task on the second processor core writes them, while
+        the firmware reports the lateness of every tick.
+      </p>
+      <div class="takeaway">
+        <b>Takeaway:</b> a Python decoder for each radio packet and a radio client
+        that records exactly what a phone receives.
+      </div>
+    </div>
+    <div class="figure-col figs-2">
+      <figure class="fig"><img src="images/bench-capture-300s.png" alt="300 s capture with motion, pressure and gas traces"><figcaption>One 300 s capture: motion, three pressures, O2 and CO2</figcaption></figure>
+      <figure class="fig"><img src="images/bench-pressure-taps.png" alt="Recorded pressure at the three taps"><figcaption>Pressure at the three taps through a breathing sequence</figcaption></figure>
+    </div>
+  </div>
+  <div class="foot-rule"></div>
+  <div class="pagenum">8</div>
+</section>
+
+<!-- 9: SENSOR, REFERENCE TESTING, TECHNIQUE -->
+<section class="slide">
+  <div class="head">
+    <div>
+      <div class="eyebrow">01 &middot; Sensor Characterisation</div>
+      <h2>Reference Testing: A Known Breath</h2>
+    </div>
+    <div class="pageno">2026 &middot; Technique</div>
+  </div>
+  <div class="body-grid">
+    <div class="text-col">
+      <p>
+        A person cannot breathe the same way twice, so a change in the firmware
+        cannot be told from a change in the breath.
+      </p>
+      <p>
+        A breathing simulator gives the same breath every time and exports its own
+        waveform. That waveform is an independent reference for the flow and
+        volume of the bench.
+      </p>
+      <div class="takeaway">
+        <b>Takeaway:</b> the same input for every firmware version, and a reference
+        that does not come from the device under test.
+      </div>
+    </div>
+    <div class="figure-col figs-1">
+      <figure class="fig">
+        <svg viewBox="0 0 640 320" role="img" aria-label="Reference test loop">
+          <rect width="640" height="320" fill="#fff"/>
+          <g fill="#f4f5f6" stroke="#111417" stroke-width="1.5"><rect x="30" y="50" width="160" height="60"/><rect x="240" y="50" width="160" height="60"/><rect x="450" y="50" width="160" height="60"/><rect x="30" y="210" width="160" height="60"/><rect x="345" y="210" width="160" height="60"/></g>
+          <g stroke="#7a1f2b" stroke-width="1.5" fill="none"><path d="M190 80H234"/><path d="M400 80H444"/><path d="M110 110V204"/><path d="M530 110V240H511"/><path d="M190 240H339"/></g>
+          <g fill="#7a1f2b"><path d="M240 80l-9-5v10z"/><path d="M450 80l-9-5v10z"/><path d="M110 210l-5-9h10z"/><path d="M505 240l9-5v10z"/><path d="M345 240l-9-5v10z"/></g>
+          <g font-size="13" fill="#111417" text-anchor="middle"><text x="110" y="76" font-weight="700">Breathing simulator</text><text x="110" y="94" font-size="11" fill="#55606a">known breath pattern</text><text x="320" y="85">Flow tube</text><text x="530" y="76" font-weight="700">Bench</text><text x="530" y="94" font-size="11" fill="#55606a">flow and volume</text><text x="110" y="236">Exported waveform</text><text x="110" y="254" font-size="11" fill="#55606a">the reference</text><text x="425" y="236" font-weight="700">Comparison</text><text x="425" y="254" font-size="11" fill="#55606a">record against reference</text></g>
+        </svg>
+        <figcaption>Reference loop: simulator, flow tube, bench, and the comparison</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="foot-rule"></div>
+  <div class="pagenum">9</div>
+</section>
+
+<!-- 10: SENSOR, REFERENCE TESTING, APPLICATION -->
+<section class="slide">
+  <div class="head">
+    <div>
+      <div class="eyebrow">01 &middot; Sensor Characterisation</div>
+      <h2>Reference Testing: ASL 5000 Captures</h2>
+    </div>
+    <div class="pageno">2026 &middot; Application</div>
+  </div>
+  <div class="body-grid">
+    <div class="text-col">
+      <p>
+        An ASL 5000 breathing simulator drove the flow tube at a fixed rate of
+        about 12 breaths per minute through 300 s captures.
+      </p>
+      <p>
+        The flow and net volume from the board were drawn live during each capture
+        and compared afterwards with the waveform exported from the simulator.
+      </p>
+      <div class="takeaway">
+        <b>Takeaway:</b> every simulator capture is kept with its reference: the
+        exported waveform beside the record of the board.
+      </div>
+    </div>
+    <div class="figure-col figs-stills">
+      <figure class="fig"><img src="images/bench-simulator-1min.jpg" alt="Live plot of flow, net volume and pressure, 1 min into a simulator capture"><figcaption>Live plot, 1 min: flow, net volume, pressure</figcaption></figure>
+      <figure class="fig"><img src="images/bench-simulator-2min.jpg" alt="Live plot of flow, net volume and pressure, 2 min into a simulator capture"><figcaption>Live plot, 2 min</figcaption></figure>
+      <figure class="fig wide"><img src="images/bench-simulator-4min.jpg" alt="Live plot of flow, net volume and pressure, 4 min into a simulator capture"><figcaption>Live plot, 4 min</figcaption></figure>
+    </div>
+  </div>
+  <div class="foot-rule"></div>
+  <div class="pagenum">10</div>
+</section>
+
+<!-- 11: SECTION DIVIDER, IMAGING -->
+<section class="slide slide--section">
+  <div class="num">02</div>
+  <h2>Medical Imaging Systems</h2>
+  <p>
+    Experiments on four systems: DeskCAT (simulated X-ray and CT), Clarius L15 and
+    C3 handheld probes (ultrasound), the Earth&rsquo;s Field MRI apparatus (NMR) and
+    the 0.345T ilumr system (MRI). Image formation, reconstruction and analysis
+    applied Fourier-transform theory in MATLAB and Python.
+  </p>
+  <p class="updated">Last Updated: 14 November 2026</p>
+</section>
+
+<!-- 12: INSTRUMENTATION OVERVIEW -->
+<section class="slide">
+  <div class="head">
+    <div>
+      <div class="eyebrow">02 &middot; Medical Imaging</div>
+      <h2>Lab Instrumentation</h2>
+    </div>
+    <div class="pageno">Imaging Systems</div>
+  </div>
+  <div class="body-grid narrow-text">
+    <div class="text-col">
+      <p class="label">Systems Used</p>
+      <p>Operated four systems across three modalities:</p>
+      <ul class="list-plain">
+        <li>DeskCAT for simulated projection X-ray and CT</li>
+        <li>Clarius L15 and C3 handheld probes for ultrasound</li>
+        <li>Earth&rsquo;s Field MRI apparatus for NMR</li>
+        <li>0.345T ilumr system for MRI</li>
+      </ul>
+    </div>
+    <div class="figure-col figs-2x2">
+      <figure class="fig"><img src="images/instr-deskcat.jpeg" alt="DeskCAT simulated X-ray/CT scanner"><figcaption>DeskCAT simulated X-ray/CT scanner with phantom insert</figcaption></figure>
+      <figure class="fig"><img src="images/instr-clarius-l15.jpeg" alt="Clarius handheld ultrasound probe"><figcaption>Clarius handheld ultrasound transducer (L15/C3 series)</figcaption></figure>
+      <figure class="fig"><img src="images/instr-efmri.jpeg" alt="Earth's Field MRI apparatus"><figcaption>Earth&rsquo;s Field MRI apparatus, NMR coil assembly</figcaption></figure>
+      <figure class="fig"><img src="images/instr-ilumr.jpeg" alt="ilumr 0.345T MRI system"><figcaption>0.345T ilumr MRI system</figcaption></figure>
+    </div>
+  </div>
+  <div class="foot-rule"></div>
+  <div class="pagenum">12</div>
+</section>
+
+<!-- 13: CT / X-RAY -->
+<section class="slide">
+  <div class="head">
+    <div>
+      <div class="eyebrow">02 &middot; Medical Imaging</div>
+      <h2>X-Ray and CT: Reconstruction and Image Quality</h2>
+    </div>
+    <div class="pageno">Fourier Theory &middot; PSF/MTF</div>
+  </div>
+  <div class="body-grid narrow-text">
+    <div class="text-col">
+      <p>
+        Acquired projection X-ray and CT scans of a resolution phantom on DeskCAT
+        and reconstructed the cross-sections in MATLAB and Python.
+      </p>
+      <p>
+        Measured the edge response, the line spread function (LSF) and the
+        modulation transfer function (MTF) of the scanner.
+      </p>
     </div>
     <div class="figure-col figs-3x2">
       <figure class="fig"><img src="images/ct-xray-phantom.jpeg" alt="X-ray phantom captures"><figcaption>DeskCAT phantom X-ray captures, resolution bar targets</figcaption></figure>
@@ -122,54 +470,54 @@
     </div>
   </div>
   <div class="foot-rule"></div>
-  <div class="pagenum">4</div>
+  <div class="pagenum">13</div>
 </section>
 
-<!-- 5: ULTRASOUND -->
+<!-- 14: ULTRASOUND -->
 <section class="slide">
   <div class="head">
     <div>
-      <div class="eyebrow">01 &middot; Medical Imaging</div>
-      <h2>Ultrasound &amp; Elastography</h2>
+      <div class="eyebrow">02 &middot; Medical Imaging</div>
+      <h2>Ultrasound and Elastography</h2>
     </div>
-    <div class="pageno">Noise, Artifact &amp; Resolution</div>
+    <div class="pageno">Noise, Artifact and Resolution</div>
   </div>
-  <div class="body-grid">
+  <div class="body-grid narrow-text">
     <div class="text-col">
       <p>
-        Conducted hands-on ultrasound imaging and elastography using handheld
-        Bluetooth-connected US systems on iPads.
+        Conducted ultrasound imaging and elastography with handheld Clarius probes
+        connected to an iPad over Bluetooth.
       </p>
-      <p>Analyzed sources of noise, artifacts, and resolution limits in ultrasound.</p>
-      <div class="takeaway">
-        <b>Takeaway:</b> B-mode, M-mode, and color/power Doppler acquisition on
-        handheld Clarius probes, with phantom-target imaging used to characterize
-        noise, artifacts, and resolution limits.
-      </div>
+      <p>
+        Imaged a bicep in longitudinal view with the L15 HD and C3 HD probes,
+        recorded an M-mode trace of the carotid artery and colour and power
+        Doppler flow images, and imaged the wire and cyst targets of a phantom to
+        mark its artifacts.
+      </p>
     </div>
     <div class="figure-col figs-3x2">
-      <figure class="fig"><img src="images/us-bicep-l15-c3.jpeg" alt="Ultrasound of bicep with L15 and C3 probes"><figcaption>Bicep, longitudinal &mdash; L15HD (left), C3HD (right)</figcaption></figure>
-      <figure class="fig"><img src="images/us-mmode-carotid.jpeg" alt="M-mode ultrasound of carotid artery"><figcaption>M-mode still capture of the imaging of the carotid artery</figcaption></figure>
-      <figure class="fig"><img src="images/us-doppler-1.jpeg" alt="Color Doppler ultrasound capture"><figcaption>Color Doppler flow imaging capture</figcaption></figure>
+      <figure class="fig"><img src="images/us-bicep-l15-c3.jpeg" alt="Ultrasound of bicep with L15 and C3 probes"><figcaption>Bicep, longitudinal: L15HD (left), C3HD (right)</figcaption></figure>
+      <figure class="fig"><img src="images/us-mmode-carotid.jpeg" alt="M-mode ultrasound of carotid artery"><figcaption>M-mode capture of the carotid artery</figcaption></figure>
+      <figure class="fig"><img src="images/us-doppler-1.jpeg" alt="Colour Doppler ultrasound capture"><figcaption>Colour Doppler flow imaging capture</figcaption></figure>
       <figure class="fig"><img src="images/us-doppler-2.jpeg" alt="Power Doppler ultrasound capture"><figcaption>Power Doppler flow imaging capture</figcaption></figure>
-      <figure class="fig"><img src="images/us-phantom-targets.jpeg" alt="Ultrasound phantom target images"><figcaption>Phantom target imaging &mdash; wire and cyst targets</figcaption></figure>
+      <figure class="fig"><img src="images/us-phantom-targets.jpeg" alt="Ultrasound phantom target images"><figcaption>Phantom imaging: wire and cyst targets</figcaption></figure>
       <figure class="fig"><img src="images/us-phantom-artifacts.jpeg" alt="Ultrasound phantom artifact analysis"><figcaption>Phantom imaging, annotated for artifact analysis</figcaption></figure>
     </div>
   </div>
   <div class="foot-rule"></div>
-  <div class="pagenum">5</div>
+  <div class="pagenum">14</div>
 </section>
 
-<!-- 6: MRI -->
+<!-- 15: MRI -->
 <section class="slide">
   <div class="head">
     <div>
-      <div class="eyebrow">01 &middot; Medical Imaging</div>
-      <h2>MRI &mdash; Acquisition &amp; Advanced Reconstruction</h2>
+      <div class="eyebrow">02 &middot; Medical Imaging</div>
+      <h2>MRI: Acquisition and Reconstruction</h2>
     </div>
     <div class="pageno">DWI &middot; DTI &middot; fMRI</div>
   </div>
-  <div class="body-grid">
+  <div class="body-grid narrow-text">
     <div class="text-col">
       <p>
         Performed MRI experiments on 0.33T Flowerpot MRI systems including
@@ -181,82 +529,84 @@
         diffusion tensor imaging (DTI), and functional MRI (fMRI) from human
         scanning sessions.
       </p>
-      <p>Reconstructed in Python.</p>
-      <div class="takeaway">
-        <b>Takeaway:</b> full MRI experimental pipeline &mdash; system calibration
-        and sequence selection through to DWI/DTI/fMRI reconstruction and scalar-map
-        analysis (FA, MD, AD, RD) in Python.
-      </div>
+      <p>
+        Reconstructed in Python, and computed k-space noise maps with and without
+        diffusion weighting, a subtraction image and DTI scalar maps (FA, MD, AD,
+        RD).
+      </p>
     </div>
     <div class="figure-col figs-2x2">
       <figure class="fig"><img src="images/mri-noise-maps-small.jpeg" alt="MRI noise maps with and without diffusion weighting"><figcaption>k-space noise maps, with/without diffusion weighting</figcaption></figure>
       <figure class="fig"><img src="images/mri-noise-subtraction.jpeg" alt="MRI diffusion weighting subtraction image"><figcaption>Diffusion weighting comparison and subtraction image</figcaption></figure>
-      <figure class="fig"><img src="images/mri-dti-scalar-maps.jpeg" alt="DTI scalar maps: FA, MD, AD, RD"><figcaption>DTI scalar maps &mdash; fractional anisotropy, mean/axial/radial diffusivity</figcaption></figure>
+      <figure class="fig"><img src="images/mri-dti-scalar-maps.jpeg" alt="DTI scalar maps: FA, MD, AD, RD"><figcaption>DTI scalar maps: fractional anisotropy, mean/axial/radial diffusivity</figcaption></figure>
       <figure class="fig"><img src="images/mri-fmri-slices.jpeg" alt="fMRI/DWI brain slice montage"><figcaption>Axial brain slice montage from human scanning session</figcaption></figure>
     </div>
   </div>
   <div class="foot-rule"></div>
-  <div class="pagenum">6</div>
+  <div class="pagenum">15</div>
 </section>
 
-<!-- 7: SECTION DIVIDER — EEG -->
+<!-- 16: SECTION DIVIDER, EEG -->
 <section class="slide slide--section">
-  <div class="num">02</div>
+  <div class="num">03</div>
   <h2>EEG Instrumentation</h2>
   <p>
-    2025 &mdash; REM sleep EEG. A custom EEG front-end built around the BioAmp EXG
-    Pill, following OpenEEG reference documentation, then benchmarked against
-    clinical reference EEG equipment supplied and tested at McMaster LiveLAB.
+    2025, REM sleep EEG. A custom EEG front-end built around the BioAmp EXG Pill
+    from the OpenEEG reference documentation, then compared with the clinical
+    reference EEG system at McMaster LiveLAB.
   </p>
+  <p class="updated">Last Updated: 14 November 2026</p>
 </section>
 
-<!-- 8: EEG CIRCUIT DESIGN -->
+<!-- 17: EEG CIRCUIT DESIGN -->
 <section class="slide">
   <div class="head">
     <div>
-      <div class="eyebrow">02 &middot; EEG Instrumentation</div>
+      <div class="eyebrow">03 &middot; EEG Instrumentation</div>
       <h2>Front-End Circuit Design</h2>
     </div>
-    <div class="pageno">2025 &mdash; REM Sleep EEG</div>
+    <div class="pageno">2025 &middot; REM Sleep EEG</div>
   </div>
-  <div class="body-grid">
+  <div class="body-grid narrow-text">
     <div class="text-col">
-      <p>Hardware used sourced from BioAmp EXG Pill, used with documentation from OpenEEG.</p>
+      <p>Built on the BioAmp EXG Pill, with the OpenEEG reference documentation.</p>
       <div class="takeaway">
-        <b>Takeaway:</b> signal chain built from an instrumentation-amplifier input
-        stage, a 1000x-gain bandpass filter with amplifier-reference/driven-right-leg
-        (DRL) stage, and filtered power supply &mdash; with a solder-jumper electrode
-        reference supporting 2- or 3-electrode configurations.
+        <b>Takeaway:</b> the signal chain has four parts: an instrumentation
+        amplifier input stage, a bandpass filter with a gain of 1000, an amplifier
+        reference with a driven right leg (DRL) stage, and a filtered power supply.
+        A solder jumper sets the electrode reference for 2 or 3 electrodes.
       </div>
     </div>
     <div class="figure-col figs-2x2">
       <figure class="fig"><img src="images/eeg-circuit-ina.jpeg" alt="Instrumentation amplifier circuit"><figcaption>Instrumentation amplifier (INA) input stage</figcaption></figure>
       <figure class="fig"><img src="images/eeg-circuit-bandpass-drl.jpeg" alt="Bandpass filter and DRL circuit"><figcaption>1000x gain bandpass filter; amp reference + driven right leg (DRL)</figcaption></figure>
       <figure class="fig"><img src="images/eeg-circuit-power.jpeg" alt="Power supply filtering circuit"><figcaption>Power supply filtering; header pins and connectors</figcaption></figure>
-      <figure class="fig"><img src="images/eeg-circuit-electrode-ref.jpeg" alt="Electrode reference configuration"><figcaption>Electrode reference &mdash; 2- or 3-electrode solder-jumper configuration</figcaption></figure>
+      <figure class="fig"><img src="images/eeg-circuit-electrode-ref.jpeg" alt="Electrode reference configuration"><figcaption>Electrode reference: 2- or 3-electrode solder-jumper configuration</figcaption></figure>
     </div>
   </div>
   <div class="foot-rule"></div>
-  <div class="pagenum">8</div>
+  <div class="pagenum">17</div>
 </section>
 
-<!-- 9: EEG CLINICAL VALIDATION -->
+<!-- 18: EEG CLINICAL VALIDATION -->
 <section class="slide">
   <div class="head">
     <div>
-      <div class="eyebrow">02 &middot; EEG Instrumentation</div>
+      <div class="eyebrow">03 &middot; EEG Instrumentation</div>
       <h2>Clinical Reference Validation</h2>
     </div>
-    <div class="pageno">2025 &mdash; REM Sleep EEG</div>
+    <div class="pageno">2025 &middot; REM Sleep EEG</div>
   </div>
-  <div class="body-grid">
+  <div class="body-grid narrow-text">
     <div class="text-col">
-      <p>Clinical reference EEG equipment supplied and tested at McMaster LiveLAB.</p>
-      <div class="takeaway">
-        <b>Takeaway:</b> the custom front-end&rsquo;s recorded signal was compared
-        directly against LiveLAB&rsquo;s clinical-reference EEG recording, alongside
-        raw/envelope/cumulative-sum spectrum analysis of the captured data.
-      </div>
+      <p>
+        Recorded with the custom front-end and with the clinical reference EEG
+        system at McMaster LiveLAB.
+      </p>
+      <p>
+        Compared the two recordings, and analysed the raw, envelope and
+        cumulative-sum spectra of two recordings, with the R&sup2; of each logged.
+      </p>
     </div>
     <div class="figure-col figs-2x2">
       <figure class="fig"><img src="images/eeg-session-photo.jpeg" alt="EEG recording session"><figcaption>Recording session with the custom EEG front-end</figcaption></figure>
@@ -266,31 +616,31 @@
     </div>
   </div>
   <div class="foot-rule"></div>
-  <div class="pagenum">9</div>
+  <div class="pagenum">18</div>
 </section>
 
-<!-- 10: SECTION DIVIDER — CASE STUDY -->
+<!-- 19: SECTION DIVIDER, CASE STUDY -->
 <section class="slide slide--section">
-  <div class="num">03</div>
+  <div class="num">04</div>
   <h2>Case Study: Hip Implant Redesign</h2>
   <p>
-    2022 &mdash; a 51-year-old male presented with progressive symptoms following a
-    left total hip arthroplasty, later diagnosed with aseptic periprosthetic
+    2022. A 51-year-old male presented with progressive symptoms after a left
+    total hip arthroplasty and was later diagnosed with aseptic periprosthetic
     osteolysis. The following pages trace the case from symptom progression,
-    through the underlying wear-debris mechanism, to a biocompatible implant
-    designed in response.
+    through the wear-debris mechanism, to the implant designed in response.
   </p>
   <p class="credit">DP2 Project Team 16: Kristina Siiman, Jacky Nam, Megan Saunders, Ali Hussin</p>
+  <p class="updated">Last Updated: 14 November 2026</p>
 </section>
 
-<!-- 11: CASE — PROBLEM -->
+<!-- 20: CASE, PROBLEM -->
 <section class="slide">
   <div class="head">
     <div>
-      <div class="eyebrow">03 &middot; Case Study</div>
-      <h2>Problem &mdash; Symptom Progression</h2>
+      <div class="eyebrow">04 &middot; Case Study</div>
+      <h2>Problem: Symptom Progression</h2>
     </div>
-    <div class="pageno">2022 &mdash; Hip Implant</div>
+    <div class="pageno">2022 &middot; Hip Implant</div>
   </div>
   <div class="body-grid wide-text">
     <div class="text-col">
@@ -311,33 +661,33 @@
         <li>Slight gait disturbance</li>
       </ul>
       <div class="takeaway">
-        <b>Fast facts:</b> 51 years old, 111 kg, 181 cm, BMI = 33.9. Diagnosed with
-        aseptic periprosthetic osteolysis &mdash; designed a biocompatible implant
-        able to sustain lifestyle and exercise patterns.
+        <b>Fast facts:</b> 51 years old, 111 kg, 181 cm, BMI = 33.9. Diagnosis:
+        aseptic periprosthetic osteolysis. The team designed a biocompatible
+        implant for a 111 kg patient who exercises.
       </div>
     </div>
     <div class="figure-col figs-2">
       <figure class="fig"><img src="images/hip-xray-5yr.jpeg" alt="Left hip X-ray, 5 years post-replacement"><figcaption>Left hip, 5 years post-replacement</figcaption></figure>
-      <figure class="fig"><img src="images/hip-xray-7yr.jpeg" alt="Left hip X-ray, 7 years post-replacement, cavitation worsening"><figcaption>7 years post-replacement &mdash; cavitation worsening</figcaption></figure>
+      <figure class="fig"><img src="images/hip-xray-7yr.jpeg" alt="Left hip X-ray, 7 years post-replacement, cavitation worsening"><figcaption>7 years post-replacement: cavitation worsening</figcaption></figure>
     </div>
   </div>
   <div class="foot-rule"></div>
-  <div class="pagenum">11</div>
+  <div class="pagenum">20</div>
 </section>
 
-<!-- 12: CASE — ANALYSIS -->
+<!-- 21: CASE, ANALYSIS -->
 <section class="slide">
   <div class="head">
     <div>
-      <div class="eyebrow">03 &middot; Case Study</div>
-      <h2>Analysis &mdash; Mechanism of Failure</h2>
+      <div class="eyebrow">04 &middot; Case Study</div>
+      <h2>Analysis: Mechanism of Failure</h2>
     </div>
-    <div class="pageno">2022 &mdash; Hip Implant</div>
+    <div class="pageno">2022 &middot; Hip Implant</div>
   </div>
   <div class="body-grid wide-text">
     <div class="text-col">
       <span class="stage-tag">Analysis</span>
-      <p class="label">Background: Arthritis &amp; Osteolysis</p>
+      <p class="label">Background: Arthritis and Osteolysis</p>
       <ul class="list-plain">
         <li>Synovial fluid is the natural lubricating fluid allowing for smooth joint movement, protecting bones and cartilage.</li>
         <li>Inability of the synovial joint fluid to naturally regenerate leads to cartilage degradation and inflammation of the joints, causing arthritis.</li>
@@ -346,10 +696,9 @@
         <li>Foreign response to particle debris initiates bone loss.</li>
       </ul>
       <div class="takeaway">
-        <b>Diagnosis:</b> aseptic periprosthetic osteolysis &mdash; an inflammatory
-        response to particles excreted by the polyethylene implant, causing implant
-        degradation and aseptic loosening. This explains the implant&rsquo;s
-        cavitation and resulting weakness.
+        <b>Diagnosis:</b> aseptic periprosthetic osteolysis, an inflammatory
+        response to wear particles shed by the polyethylene liner, which causes
+        bone loss around the implant and aseptic loosening.
       </div>
     </div>
     <div class="figure-col figs-1">
@@ -357,32 +706,31 @@
     </div>
   </div>
   <div class="foot-rule"></div>
-  <div class="pagenum">12</div>
+  <div class="pagenum">21</div>
 </section>
 
-<!-- 13: CASE — DESIGN RESPONSE -->
+<!-- 22: CASE, DESIGN RESPONSE -->
 <section class="slide">
   <div class="head">
     <div>
-      <div class="eyebrow">03 &middot; Case Study</div>
-      <h2>Design Response &mdash; Implant &amp; Materials</h2>
+      <div class="eyebrow">04 &middot; Case Study</div>
+      <h2>Design Response: Implant and Materials</h2>
     </div>
-    <div class="pageno">2022 &mdash; Hip Implant</div>
+    <div class="pageno">2022 &middot; Hip Implant</div>
   </div>
   <div class="body-grid wide-text">
     <div class="text-col">
       <span class="stage-tag">Design Response</span>
       <p>
-        The new implant uses novel layered materials to strike balances between
-        biocompatibility and wear resistance (in the femoral head and acetabular
-        cup), and ultimate strength and bone density reduction (in the stem). A
-        spring connects the femoral head to the stem, removing mechanical load and
-        absorbing shock.
+        The implant layers materials by component. The femoral head and the
+        acetabular cup balance biocompatibility against wear resistance. The stem
+        balances ultimate strength against loss of bone density. A spring between
+        the femoral head and the stem absorbs shock.
       </p>
       <div class="materials-block">
-        <h4>Coatings &amp; Combinations</h4>
+        <h4>Coatings and Combinations</h4>
         <p>
-          316 Stainless Steel interior of femoral stem coated with Porous Tantalum
+          316L Stainless Steel interior of femoral stem coated with Porous Tantalum
           of high ultimate strength; Zirconia Toughened Alumina (ZTA) acts as a
           protective coating on the femoral head; acetabular cup is lined with
           Highly Crosslinked Polyethylene (XLPE) against a Porous Tantalum cup.
@@ -390,106 +738,75 @@
       </div>
       <div class="materials-block">
         <h4>Spring</h4>
-        <p>Cobalt Chromium alloy, chosen for high corrosion resistance and biocompatibility.</p>
-      </div>
-      <div class="takeaway">
-        <b>Takeaway:</b> cup-and-liner implant using Porous Tantalum, 316L
-        steel, ZTA, and XLPE for bone-stiffness matching and wear resistance,
-        with a Co-Cr spring absorbing compressive load.
+        <p>Cobalt Chromium alloy (Phynox), chosen for high corrosion resistance and biocompatibility.</p>
       </div>
     </div>
     <div class="figure-col figs-mix">
-      <figure class="fig tall"><img src="images/hip-cad-assembly.jpeg" alt="CAD assembly of hip implant"><figcaption>CAD assembly &mdash; cup-and-liner, spring, and stem</figcaption></figure>
+      <figure class="fig tall"><img src="images/hip-cad-assembly.jpeg" alt="CAD assembly of hip implant"><figcaption>CAD assembly: cup-and-liner, spring and stem</figcaption></figure>
       <figure class="fig"><img src="images/hip-cad-stem.jpeg" alt="CAD render of femoral stem"><figcaption>Femoral stem CAD render</figcaption></figure>
       <figure class="fig"><img src="images/hip-materials-table.jpeg" alt="Materials selection table"><figcaption>Materials selection by component</figcaption></figure>
     </div>
   </div>
   <div class="foot-rule"></div>
-  <div class="pagenum">13</div>
+  <div class="pagenum">22</div>
 </section>
 
-<!-- 14: CASE — MATERIALS JUSTIFICATION I -->
+<!-- 23: CASE, MATERIALS JUSTIFICATION -->
 <section class="slide">
   <div class="head">
     <div>
-      <div class="eyebrow">03 &middot; Case Study</div>
-      <h2>Materials Justification &mdash; Structural Metals &amp; Ceramic</h2>
+      <div class="eyebrow">04 &middot; Case Study</div>
+      <h2>Materials Justification and Surgery</h2>
     </div>
-    <div class="pageno">2022 &mdash; Hip Implant</div>
+    <div class="pageno">2022 &middot; Hip Implant</div>
   </div>
-  <div class="body-grid wide-text">
+  <div class="body-grid table-left">
     <div class="text-col">
-      <div class="materials-block">
-        <h4>Porous Tantalum</h4>
-        <p>
-          Preserves bone strength and density over long-term recovery periods;
-          nearly identical elastic modulus to accurately mimic bone stiffness,
-          reducing bone loss.
-        </p>
-      </div>
-      <div class="materials-block">
-        <h4>Stainless Steel 316L</h4>
-        <p>
-          Compensates for the lack of initial stiffness of Porous Tantalum with a
-          higher elastic modulus than titanium; long-lasting reliability in
-          biocompatibility and corrosion resistance.
-        </p>
-      </div>
-      <div class="materials-block">
-        <h4>ZTA &mdash; Zirconia Toughened Alumina</h4>
-        <p>
-          Resistant to increased corrosion with low brittleness, reducing
-          fracture; high elastic modulus, limiting implant stress.
-        </p>
-      </div>
-      <div class="takeaway">
-        <b>Takeaway:</b> the stem and femoral head pair a bone-matching Porous
-        Tantalum / Stainless Steel 316L structure with a ZTA wear surface,
-        chosen for elastic-modulus matching and corrosion resistance.
-      </div>
-    </div>
-    <div class="figure-col figs-1">
-      <figure class="fig"><img src="images/hip-zta-crystal-states.jpeg" alt="ZTA tetragonal and monoclinic crystal states"><figcaption>ZTA tetragonal vs. monoclinic crystal states</figcaption></figure>
-    </div>
-  </div>
-  <div class="foot-rule"></div>
-  <div class="pagenum">14</div>
-</section>
-
-<!-- 15: CASE — MATERIALS JUSTIFICATION II -->
-<section class="slide">
-  <div class="head">
-    <div>
-      <div class="eyebrow">03 &middot; Case Study</div>
-      <h2>Materials Justification &mdash; Bearing Surface &amp; Surgery</h2>
-    </div>
-    <div class="pageno">2022 &mdash; Hip Implant</div>
-  </div>
-  <div class="body-grid wide-text">
-    <div class="text-col">
-      <div class="materials-block">
-        <h4>XLPE &mdash; Highly Crosslinked Polyethylene</h4>
-        <p>
-          1200 GPa ultimate strength with reduced particle debris; crosslinked
-          property minimizes wear, reducing inflammation.
-        </p>
-      </div>
-      <div class="materials-block">
-        <h4>Spring &amp; Phynox</h4>
-        <p>
-          Absorbs shock from compressive stress on the implant by removing
-          mechanical load; a stiffer spring accounts for increased weight,
-          decreasing compression. Extremely high corrosion wear and fatigue life.
-        </p>
-      </div>
+      <table class="mat-table">
+        <thead>
+          <tr><th style="width:19%">Material</th><th style="width:19%">Component</th><th style="width:31%">Property</th><th>Reason</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Porous Tantalum</td>
+            <td>Femoral stem coating; acetabular cup</td>
+            <td>Elastic modulus close to that of bone</td>
+            <td>Preserves bone strength and density over long-term recovery periods, reducing bone loss</td>
+          </tr>
+          <tr>
+            <td>316L Stainless Steel</td>
+            <td>Femoral stem interior; femoral head</td>
+            <td>Higher elastic modulus than titanium; long-lasting biocompatibility and corrosion resistance</td>
+            <td>Compensates for the lack of initial stiffness of Porous Tantalum</td>
+          </tr>
+          <tr>
+            <td>ZTA (Zirconia Toughened Alumina)</td>
+            <td>Femoral head coating</td>
+            <td>Resists corrosion and is less brittle; high elastic modulus</td>
+            <td>Lowers the risk of fracture and limits implant stress</td>
+          </tr>
+          <tr>
+            <td>XLPE (Highly Crosslinked Polyethylene)</td>
+            <td>Acetabular cup liner</td>
+            <td>Crosslinking lowers wear and particle debris</td>
+            <td>Less of the particle debris that drives inflammation</td>
+          </tr>
+          <tr>
+            <td>Cobalt Chromium alloy (Phynox)</td>
+            <td>Spring between femoral head and stem</td>
+            <td>High corrosion resistance and a long fatigue life</td>
+            <td>Absorbs shock under compressive load; a stiffer spring accounts for the weight of the patient</td>
+          </tr>
+        </tbody>
+      </table>
       <div class="materials-block">
         <h4>Surgical Considerations</h4>
         <p>
           Cemented implant fixation mimics natural bone, keeping the implant
-          stable where reduced bone mass cannot otherwise hold it. Pre-op:
-          weight loss. Operative: posterior approach, bariatric equipment, IV
-          antibiotics. Post-op: higher nursing vigilance, epidural
-          anesthetics, physiotherapy.
+          stable where reduced bone mass cannot otherwise hold it. Pre-op: weight
+          loss. Operative: posterior approach, bariatric equipment, IV
+          antibiotics. Post-op: higher nursing vigilance, epidural anesthetics,
+          physiotherapy.
         </p>
       </div>
     </div>
@@ -498,10 +815,10 @@
     </div>
   </div>
   <div class="foot-rule"></div>
-  <div class="pagenum">15</div>
+  <div class="pagenum">23</div>
 </section>
 
-<!-- 16: CLOSING -->
+<!-- 24: CLOSING -->
 <section class="slide slide--title">
   <div class="title-frame title-frame--closing">
     <div class="byline">Jacky Nam</div>
