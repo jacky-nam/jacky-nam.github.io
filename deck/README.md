@@ -19,6 +19,12 @@ directory via its path.)
 This renders `index.html` to a 16:9 landscape PDF and writes it to
 `ReferenceDeck.pdf` at the repo root (the path the portfolio page embeds).
 
+## Section dates
+
+Each section divider slide carries a `Last Updated: <date>` line
+(`<p class="updated">` in `index.html`). It is set by hand: when you change a
+section, update the date on that section's divider and re-render.
+
 ## Requirements
 
 - **Chrome or Chromium.** The script auto-detects Google Chrome / Chromium in
