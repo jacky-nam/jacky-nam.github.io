@@ -484,3 +484,15 @@ html, body {
   color: var(--accent);
   font-weight: 700;
 }
+
+.text-col p.demo-link {
+  margin: 0.12in 0 0 0;
+  font-size: 8.8pt;
+}
+
+.demo-link a {
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: underline;
+  margin-right: 0.08in;
+}
