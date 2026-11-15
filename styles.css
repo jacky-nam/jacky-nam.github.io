@@ -259,6 +259,25 @@ a.icon-link:focus-visible {
   text-align: center;
 }
 
+/* portfolio page: capture clip, framed like the deck */
+
+.clip {
+  margin-top: 1.4rem;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.clip__video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1000 / 474;
+  background: var(--surface);
+}
+.clip__fallback { padding: 1.4rem; margin: 0; font-size: 0.94rem; }
+.clip__caption { margin: 0.9rem 0 0; line-height: 1.7; }
+
 /* projects page: project cards */
 
 .repo-grid {
