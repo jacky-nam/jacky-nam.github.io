@@ -412,18 +412,6 @@ html, body {
 
 /* ---------- Case study slides ---------- */
 
-.stage-tag {
-  display: inline-block;
-  font-size: 8.5pt;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  font-weight: 700;
-  color: #fff;
-  background: var(--accent);
-  padding: 0.03in 0.1in;
-  margin-bottom: 0.12in;
-}
-
 .list-plain {
   margin: 0;
   padding-left: 0.18in;
