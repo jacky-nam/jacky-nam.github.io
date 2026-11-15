@@ -36,11 +36,12 @@
   <h2>Sensor Characterisation Bench</h2>
   <p>
     2026. A bench that characterises one motion sensor, three pressure sensors
-    and one breath-gas sensor on a single microcontroller: 21 firmware releases,
-    283 kept runs, three issued technical reports, and a Bluetooth Low Energy
-    stream with microSD logging.
+    and one breath-gas sensor on a single microcontroller. Over 21 firmware
+    revisions, the spread of the conversion time stamps across the three
+    pressure sensors fell from 4.26 ms to 0.20 ms. The breath rate sent by
+    radio came to equal the host calculation, from 22 % of values to 100 %.
   </p>
-  <p class="updated">Last Updated: 14 November 2026</p>
+  <p class="updated">Last Updated: 15 November 2026</p>
 </section>
 
 <!-- 3: SENSOR, ACQUISITION, TECHNIQUE -->
@@ -48,24 +49,19 @@
   <div class="head">
     <div>
       <div class="eyebrow">01 &middot; Sensor Characterisation</div>
-      <h2>Acquisition: One Clock, One Row</h2>
+      <h2>Fixed-Rate Acquisition</h2>
     </div>
-    <div class="pageno">2026 &middot; Technique</div>
   </div>
   <div class="body-grid">
     <div class="text-col">
       <p>
-        A fixed-rate scheduler reads every sensor inside one 10 ms tick, so all
-        channels share one time base.
+        Every sensor is read inside one 10 ms tick, so all channels share one time base.
       </p>
       <p>
-        Each pressure sensor signals a finished conversion by interrupt. The row
-        stores the count and the time of that conversion, which separates the
-        timing of the sensor from the timing of the loop.
+        Each pressure sensor stamps the time of its own conversion. Those stamps showed the three sensors converting 4.26 ms apart. A common trigger brought the spread to 0.20 ms.
       </p>
       <div class="takeaway">
-        <b>Takeaway:</b> one row format of 29 columns at 100 Hz, with every value
-        stamped at its source on the microcontroller clock.
+        <b>Takeaway:</b> flow comes from the difference between two pressure taps, so the two readings must describe the same instant.
       </div>
     </div>
     <div class="figure-col figs-1">
@@ -89,7 +85,7 @@
             <text x="105" y="203">Pressure, taps 2 and 3</text><text x="105" y="273">Breath-gas sensor</text>
             <text x="535" y="57">USB to host</text><text x="535" y="165">Bluetooth LE</text><text x="535" y="273">microSD log</text>
           </g>
-          <g font-size="10" fill="#7a1f2b"><text x="188" y="92">I2C bus 1</text><text x="188" y="240">I2C bus 2</text></g>
+          <g font-size="10" fill="#7a1f2b"><text x="222" y="92">I2C bus 1</text><text x="222" y="240">I2C bus 2</text></g>
         </svg>
         <figcaption>Block diagram: sensors, buses and the three output paths</figcaption>
       </figure>
@@ -104,25 +100,19 @@
   <div class="head">
     <div>
       <div class="eyebrow">01 &middot; Sensor Characterisation</div>
-      <h2>Acquisition: The Bench as Built</h2>
+      <h2>Bench Hardware</h2>
     </div>
-    <div class="pageno">2026 &middot; Application</div>
   </div>
   <div class="body-grid">
     <div class="text-col">
       <p>
-        Constraint: three identical pressure sensors offer only two bus addresses.
-        They are split across two I2C buses, one alone on the first bus and two on
-        the second with one address jumper changed.
+        Two runs can be compared only if the movement between them repeats exactly.
       </p>
       <p>
-        Constraint: a movement must repeat exactly between runs. A stepper rig
-        records its angle in every row, and a 3D printer repeats a linear stroke
-        on one axis at a time.
+        A stepper rig records its angle in every row, and a 3D printer repeats a linear stroke on one axis at a time.
       </p>
       <div class="takeaway">
-        <b>Takeaway:</b> 21 released versions of the combined firmware, each with a
-        change log, on one printed housing.
+        <b>Takeaway:</b> each of the 21 firmware revisions has a change log, so a change in a result can be traced to its cause.
       </div>
     </div>
     <div class="figure-col figs-2">
@@ -139,9 +129,8 @@
   <div class="head">
     <div>
       <div class="eyebrow">01 &middot; Sensor Characterisation</div>
-      <h2>Characterisation: The Method</h2>
+      <h2>Characterisation Method</h2>
     </div>
-    <div class="pageno">2026 &middot; Technique</div>
   </div>
   <div class="body-grid">
     <div class="text-col">
@@ -194,20 +183,16 @@
   <div class="head">
     <div>
       <div class="eyebrow">01 &middot; Sensor Characterisation</div>
-      <h2>Characterisation: Applied to the Motion Sensor</h2>
+      <h2>Motion Sensor Characterisation</h2>
     </div>
-    <div class="pageno">2026 &middot; Application</div>
   </div>
   <div class="body-grid">
     <div class="text-col">
       <p>
-        Constraint: a result must be reproducible by another person on another
-        computer. Every analysis was written twice, in MATLAB and in Python, and
-        both write the same record.
+        A result must be reproducible by another person on another computer. Every analysis was written twice, in MATLAB and in Python, and both write the same record.
       </p>
       <p>
-        283 runs are kept as raw rows with their metadata. 108 at-rest runs went
-        into the first report and 33 motion records into the second.
+        108 at-rest runs went into the first report and 33 motion records into the second. The longest at-rest record is 10 hours, which extends the Allan deviation to long averaging times.
       </p>
       <div class="takeaway">
         <b>Takeaway:</b> three technical reports issued, with units to IEC 60601-1
@@ -227,16 +212,13 @@
   <div class="head">
     <div>
       <div class="eyebrow">01 &middot; Sensor Characterisation</div>
-      <h2>Flow: From Pressure to Volume</h2>
+      <h2>Flow and Volume from Pressure</h2>
     </div>
-    <div class="pageno">2026 &middot; Technique</div>
   </div>
   <div class="body-grid">
     <div class="text-col">
       <p>
-        Flow through a restriction follows the square root of the pressure
-        difference across it. The board applies that relation to a pair of
-        pressure taps in every row and sums the flow to a net volume.
+        Flow through a restriction follows the square root of the pressure difference across it. A timing error between the two taps therefore becomes a flow error, and the volume sums it.
       </p>
       <p>
         The gas sensor reports 200 ms late. Its O2 and CO2 values are placed
@@ -280,25 +262,19 @@
   <div class="head">
     <div>
       <div class="eyebrow">01 &middot; Sensor Characterisation</div>
-      <h2>Flow: Streaming a Capture</h2>
+      <h2>Bluetooth Streaming and microSD Logging</h2>
     </div>
-    <div class="pageno">2026 &middot; Application</div>
   </div>
   <div class="body-grid text-below">
     <div class="text-col">
       <p>
-        Constraint: a radio link cannot carry every 100 Hz row. The board sends
-        flow and volume over Bluetooth Low Energy at 50 Hz and keeps every row on
-        the microSD card.
+        A radio link cannot carry every 100 Hz row. The board sends flow and volume over Bluetooth Low Energy at 50 Hz and keeps every row on the microSD card.
       </p>
       <p>
-        Constraint: a slow card write must never delay a sample. Rows wait in a
-        ring buffer and a task on the second processor core writes them, while
-        the firmware reports the lateness of every tick.
+        A slow card write must never delay a sample. Rows wait in a ring buffer, and the firmware reports the lateness of every tick.
       </p>
       <div class="takeaway">
-        <b>Takeaway:</b> a Python decoder for each radio packet and a radio client
-        that records exactly what a phone receives.
+        <b>Takeaway:</b> from revision 16, all 106 compared breath rate values on the radio equal the host calculation, against 22 % at revision 13.
       </div>
     </div>
     <div class="figure-col figs-2 figs-flow">
@@ -315,9 +291,8 @@
   <div class="head">
     <div>
       <div class="eyebrow">01 &middot; Sensor Characterisation</div>
-      <h2>Reference Testing: A Known Breath</h2>
+      <h2>Reference Testing with a Breathing Simulator</h2>
     </div>
-    <div class="pageno">2026 &middot; Technique</div>
   </div>
   <div class="body-grid">
     <div class="text-col">
@@ -357,15 +332,13 @@
   <div class="head">
     <div>
       <div class="eyebrow">01 &middot; Sensor Characterisation</div>
-      <h2>Reference Testing: ASL 5000 Captures</h2>
+      <h2>ASL 5000 Captures</h2>
     </div>
-    <div class="pageno">2026 &middot; Application</div>
   </div>
   <div class="body-grid">
     <div class="text-col">
       <p>
-        An ASL 5000 breathing simulator drove the flow tube at a fixed rate of
-        about 12 breaths per minute through 300 s captures.
+        An ASL 5000 breathing simulator held about 12 breaths per minute through each 300 s capture, so every breath in a record has a known rate.
       </p>
       <p>
         The flow and net volume from the board were drawn live during each capture
@@ -392,12 +365,9 @@
   <div class="num">02</div>
   <h2>Medical Imaging Systems</h2>
   <p>
-    Experiments on four systems: DeskCAT (simulated X-ray and CT), Clarius L15 and
-    C3 handheld probes (ultrasound), the Earth&rsquo;s Field MRI apparatus (NMR) and
-    the 0.345T ilumr system (MRI). Image formation, reconstruction and analysis
-    applied Fourier-transform theory in MATLAB and Python.
+    Image formation, reconstruction and analysis on four systems across X-ray and CT, ultrasound and MRI, with Fourier-transform theory applied in MATLAB and Python.
   </p>
-  <p class="updated">Last Updated: 14 November 2026</p>
+  <p class="updated">Last Updated: 15 November 2026</p>
 </section>
 
 <!-- 12: INSTRUMENTATION OVERVIEW -->
@@ -407,12 +377,10 @@
       <div class="eyebrow">02 &middot; Medical Imaging</div>
       <h2>Lab Instrumentation</h2>
     </div>
-    <div class="pageno">Imaging Systems</div>
   </div>
   <div class="body-grid narrow-text">
     <div class="text-col">
-      <p class="label">Systems Used</p>
-      <p>Operated four systems across three modalities:</p>
+      <p>Four systems across three modalities:</p>
       <ul class="list-plain">
         <li>DeskCAT for simulated projection X-ray and CT</li>
         <li>Clarius L15 and C3 handheld probes for ultrasound</li>
@@ -436,9 +404,8 @@
   <div class="head">
     <div>
       <div class="eyebrow">02 &middot; Medical Imaging</div>
-      <h2>X-Ray and CT: Reconstruction and Image Quality</h2>
+      <h2>X-Ray and CT Reconstruction and Image Quality</h2>
     </div>
-    <div class="pageno">Fourier Theory &middot; PSF/MTF</div>
   </div>
   <div class="body-grid narrow-text">
     <div class="text-col">
@@ -471,14 +438,9 @@
       <div class="eyebrow">02 &middot; Medical Imaging</div>
       <h2>Ultrasound and Elastography</h2>
     </div>
-    <div class="pageno">Noise, Artifact and Resolution</div>
   </div>
   <div class="body-grid narrow-text">
     <div class="text-col">
-      <p>
-        Conducted ultrasound imaging and elastography with handheld Clarius probes
-        connected to an iPad over Bluetooth.
-      </p>
       <p>
         Imaged a bicep in longitudinal view with the L15 HD and C3 HD probes,
         recorded an M-mode trace of the carotid artery and colour and power
@@ -504,9 +466,8 @@
   <div class="head">
     <div>
       <div class="eyebrow">02 &middot; Medical Imaging</div>
-      <h2>MRI: Acquisition and Reconstruction</h2>
+      <h2>MRI Acquisition and Reconstruction</h2>
     </div>
-    <div class="pageno">DWI &middot; DTI &middot; fMRI</div>
   </div>
   <div class="body-grid narrow-text">
     <div class="text-col">
@@ -546,7 +507,7 @@
     from the OpenEEG reference documentation, then compared with the clinical
     reference EEG system at McMaster LiveLAB.
   </p>
-  <p class="updated">Last Updated: 14 November 2026</p>
+  <p class="updated">Last Updated: 15 November 2026</p>
 </section>
 
 <!-- 17: EEG CIRCUIT DESIGN -->
@@ -556,11 +517,9 @@
       <div class="eyebrow">03 &middot; EEG Instrumentation</div>
       <h2>Front-End Circuit Design</h2>
     </div>
-    <div class="pageno">2025 &middot; REM Sleep EEG</div>
   </div>
   <div class="body-grid narrow-text">
     <div class="text-col">
-      <p>Built on the BioAmp EXG Pill, with the OpenEEG reference documentation.</p>
       <div class="takeaway">
         <b>Takeaway:</b> the signal chain has four parts: an instrumentation
         amplifier input stage, a bandpass filter with a gain of 1000, an amplifier
@@ -586,7 +545,6 @@
       <div class="eyebrow">03 &middot; EEG Instrumentation</div>
       <h2>Clinical Reference Validation</h2>
     </div>
-    <div class="pageno">2025 &middot; REM Sleep EEG</div>
   </div>
   <div class="body-grid narrow-text">
     <div class="text-col">
@@ -613,15 +571,14 @@
 <!-- 19: SECTION DIVIDER, CASE STUDY -->
 <section class="slide slide--section">
   <div class="num">04</div>
-  <h2>Case Study: Hip Implant Redesign</h2>
+  <h2>Hip Implant Redesign</h2>
   <p>
     2022. A 51-year-old male presented with progressive symptoms after a left
     total hip arthroplasty and was later diagnosed with aseptic periprosthetic
-    osteolysis. The following pages trace the case from symptom progression,
-    through the wear-debris mechanism, to the implant designed in response.
+    osteolysis.
   </p>
   <p class="credit">DP2 Project Team 16: Kristina Siiman, Jacky Nam, Megan Saunders, Ali Hussin</p>
-  <p class="updated">Last Updated: 14 November 2026</p>
+  <p class="updated">Last Updated: 15 November 2026</p>
 </section>
 
 <!-- 20: CASE, PROBLEM -->
@@ -629,14 +586,11 @@
   <div class="head">
     <div>
       <div class="eyebrow">04 &middot; Case Study</div>
-      <h2>Problem: Symptom Progression</h2>
+      <h2>Symptom Progression</h2>
     </div>
-    <div class="pageno">2022 &middot; Hip Implant</div>
   </div>
   <div class="body-grid wide-text">
     <div class="text-col">
-      <span class="stage-tag">Problem</span>
-      <p>Addressed concerns of a 51-year-old male after a left total hip arthroplasty.</p>
       <p class="label">Symptoms Presented</p>
       <ul class="list-plain">
         <li>Increasing pressure on hip affecting mobility</li>
@@ -671,13 +625,11 @@
   <div class="head">
     <div>
       <div class="eyebrow">04 &middot; Case Study</div>
-      <h2>Analysis: Mechanism of Failure</h2>
+      <h2>Mechanism of Failure</h2>
     </div>
-    <div class="pageno">2022 &middot; Hip Implant</div>
   </div>
   <div class="body-grid wide-text">
     <div class="text-col">
-      <span class="stage-tag">Analysis</span>
       <p class="label">Background: Arthritis and Osteolysis</p>
       <ul class="list-plain">
         <li>Synovial fluid is the natural lubricating fluid allowing for smooth joint movement, protecting bones and cartilage.</li>
@@ -705,13 +657,11 @@
   <div class="head">
     <div>
       <div class="eyebrow">04 &middot; Case Study</div>
-      <h2>Design Response: Implant and Materials</h2>
+      <h2>Implant Design and Materials</h2>
     </div>
-    <div class="pageno">2022 &middot; Hip Implant</div>
   </div>
   <div class="body-grid wide-text">
     <div class="text-col">
-      <span class="stage-tag">Design Response</span>
       <p>
         The implant layers materials by component. The femoral head and the
         acetabular cup balance biocompatibility against wear resistance. The stem
@@ -749,7 +699,6 @@
       <div class="eyebrow">04 &middot; Case Study</div>
       <h2>Materials Justification and Surgery</h2>
     </div>
-    <div class="pageno">2022 &middot; Hip Implant</div>
   </div>
   <div class="body-grid table-left">
     <div class="text-col">
