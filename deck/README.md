@@ -1,8 +1,24 @@
 # Reference deck
 
 Source for `ReferenceDeck.pdf` at the repo root. The deck is plain HTML/CSS
-(`index.html`, `style.css`, figures under `images/`) rendered to PDF with
-headless Chrome.
+(`index.html`, `style.css`, `style-harvard.css`, figures under `images/`)
+rendered to PDF with headless Chrome. `index.html` loads both stylesheets:
+`style.css` is the base, `style-harvard.css` the checklist-layout theme on top.
+
+## Synthetic figures
+
+`make_synthetic_figures.py` draws the synthetic bench plots in `images/`
+(`bench-*.png`, labelled "Synthetic data") and the 30 s demo clip written to
+`media/simulator-capture.mp4` at the repo root. It needs `numpy`, `matplotlib`
+and `imageio-ffmpeg`:
+
+```sh
+pip3 install numpy matplotlib imageio-ffmpeg
+python3 deck/make_synthetic_figures.py
+```
+
+The Live demo link in `index.html` is the absolute
+`https://jackynam.com/media/simulator-capture.mp4` so it works from the PDF.
 
 ## Re-render
 
