@@ -18,7 +18,7 @@ from matplotlib.animation import FFMpegWriter, FuncAnimation
 
 DECK_DIR = Path(__file__).resolve().parent
 IMAGE_DIR = DECK_DIR / "images"
-MEDIA_DIR = DECK_DIR / "media"
+MEDIA_DIR = DECK_DIR.parent / "media"
 RANDOM_SEED = 20261118
 DPI = 200
 

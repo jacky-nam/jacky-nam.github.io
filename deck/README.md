@@ -7,8 +7,10 @@ rendered to PDF with headless Chrome. `index.html` loads both stylesheets:
 
 ## Synthetic figures
 
-`make_synthetic_figures.py` draws the synthetic bench plots in `images/`
-(`bench-*.png`, labelled "Synthetic data") and the 30 s demo clip written to
+`make_synthetic_figures.py` draws the bench plots in `images/` (`bench-*.png`,
+labelled "Synthetic data", except `bench-conversion-result.png`, which draws
+measured summary numbers and is labelled "Measured values") and the 30 s demo
+clip written to
 `media/simulator-capture.mp4` at the repo root. It needs `numpy`, `matplotlib`
 and `imageio-ffmpeg`:
 
