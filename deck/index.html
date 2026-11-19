@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>Reference Deck</title>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style-harvard.css">
 </head>
 <body>
 
@@ -33,59 +34,36 @@
 <!-- 2: SECTION DIVIDER, SENSOR CHARACTERISATION -->
 <section class="slide slide--section">
   <div class="num">01</div>
-  <h2>Sensor Characterisation Bench</h2>
-  <p>
-    2026. A bench that characterises one motion sensor, three pressure sensors
-    and one breath-gas sensor on a single microcontroller. Over 21 firmware
-    revisions, the spread of the conversion time stamps across the three
-    pressure sensors fell from 4.26 ms to 0.20 ms. The breath rate sent by
-    radio came to equal the host calculation, from 22 % of values to 100 %.
-  </p>
+  <h2>Sensor characterisation bench</h2>
+  <p>Firmware and analysis for motion, pressure and breath-gas sensors on one microcontroller.</p>
   <p class="updated">Last Updated: 15 November 2026</p>
 </section>
 
 <!-- 3: SENSOR, ACQUISITION, TECHNIQUE -->
 <section class="slide">
   <div class="head">
-    <div>
-      <div class="eyebrow">01 &middot; Sensor Characterisation</div>
-      <h2>Fixed-Rate Acquisition</h2>
-    </div>
+    <h2>Cut the pressure time-stamp spread 22-fold, from 4.26 ms to 0.19 ms, so flow uses readings of one instant.</h2>
   </div>
-  <div class="body-grid">
-    <div class="text-col">
-      <p>
-        Every sensor is read inside one 10 ms tick, so all channels share one time base.
-      </p>
-      <p>
-        Each pressure sensor stamps the time of its own conversion. Those stamps showed the three sensors converting 4.26 ms apart. A common trigger brought the spread to 0.20 ms.
-      </p>
-      <div class="takeaway">
-        <b>Takeaway:</b> flow comes from the difference between two pressure taps, so the two readings must describe the same instant.
-      </div>
-    </div>
+  <div class="ae-body">
     <div class="figure-col figs-1">
       <figure class="fig">
         <svg viewBox="0 0 640 320" role="img" aria-label="Block diagram of the bench">
           <rect width="640" height="320" fill="#fff"/>
           <g fill="#f4f5f6" stroke="#111417" stroke-width="1.5">
             <rect x="250" y="110" width="140" height="100"/>
-            <rect x="30" y="30" width="150" height="44"/><rect x="30" y="100" width="150" height="44"/>
-            <rect x="30" y="176" width="150" height="44"/><rect x="30" y="246" width="150" height="44"/>
+            <rect x="30" y="30" width="150" height="44"/><rect x="30" y="138" width="150" height="44"/><rect x="30" y="246" width="150" height="44"/>
             <rect x="460" y="30" width="150" height="44"/><rect x="460" y="138" width="150" height="44"/><rect x="460" y="246" width="150" height="44"/>
           </g>
           <g fill="none" stroke="#7a1f2b" stroke-width="1.5">
-            <path d="M180 52H215V140H250"/><path d="M180 122H215"/>
-            <path d="M180 198H215V180H250"/><path d="M180 268H215V198"/>
+            <path d="M180 52H215V130H250"/><path d="M180 160H250"/><path d="M180 268H215V190H250"/>
             <path d="M390 130H425V52H460"/><path d="M390 160H460"/><path d="M390 190H425V268H460"/>
           </g>
           <g font-size="13" fill="#111417" text-anchor="middle">
             <text x="320" y="155" font-weight="700">Microcontroller</text><text x="320" y="174" font-size="11" fill="#55606a">100 Hz scheduler</text>
-            <text x="105" y="57">Motion sensor</text><text x="105" y="127">Pressure, tap 1</text>
-            <text x="105" y="203">Pressure, taps 2 and 3</text><text x="105" y="273">Breath-gas sensor</text>
+            <text x="105" y="57">Motion sensor</text><text x="105" y="165">Pressure sensors</text><text x="105" y="273">Breath-gas sensor</text>
             <text x="535" y="57">USB to host</text><text x="535" y="165">Bluetooth LE</text><text x="535" y="273">microSD log</text>
           </g>
-          <g font-size="10" fill="#7a1f2b"><text x="222" y="92">I2C bus 1</text><text x="222" y="240">I2C bus 2</text></g>
+          <g font-size="10" fill="#7a1f2b"><text x="222" y="92">I2C</text></g>
         </svg>
         <figcaption>Block diagram: sensors, buses and the three output paths</figcaption>
       </figure>
@@ -98,27 +76,14 @@
 <!-- 4: SENSOR, ACQUISITION, APPLICATION -->
 <section class="slide">
   <div class="head">
-    <div>
-      <div class="eyebrow">01 &middot; Sensor Characterisation</div>
-      <h2>Bench Hardware</h2>
-    </div>
+    <h2>Raised free memory 2.3-fold, from 84 kB to 197 kB, to leave room for longer sessions.</h2>
   </div>
-  <div class="body-grid">
-    <div class="text-col">
-      <p>
-        Two runs can be compared only if the movement between them repeats exactly.
-      </p>
-      <p>
-        A stepper rig records its angle in every row, and a 3D printer repeats a linear stroke on one axis at a time.
-      </p>
-      <div class="takeaway">
-        <b>Takeaway:</b> each of the 21 firmware revisions has a change log, so a change in a result can be traced to its cause.
-      </div>
-    </div>
+  <div class="ae-body">
     <div class="figure-col figs-2">
-      <figure class="fig"><img src="images/bench-assembly-side.jpg" alt="Sensor assembly on the printed housing, side view"><figcaption>Sensor assembly on the printed housing</figcaption></figure>
-      <figure class="fig"><img src="images/bench-assembly-top.jpg" alt="Sensor assembly seen from above"><figcaption>Assembly from above, with the microcontroller board</figcaption></figure>
+      <figure class="fig"><img src="images/bench-device-render.jpg" alt="Render of the Aerocardia device"><figcaption>Device render. Image: aerocardia.com</figcaption></figure>
+      <figure class="fig"><svg viewBox="0 0 640 400" role="img" aria-label="Illustration of breakout boards wired to a microcontroller board"><rect width="640" height="400" fill="#fff"/><g fill="none" stroke="#7a1f2b" stroke-width="1.5"><path d="M110 120V200H250"/><path d="M320 120V160"/><path d="M530 120V200H390"/></g><rect x="40" y="30" width="140" height="90" rx="4" fill="#f4f5f6" stroke="#111417" stroke-width="1.5"/><rect x="94.0" y="42" width="32" height="24" fill="#111417"/><circle cx="54" cy="110" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="68" cy="110" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="82" cy="110" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="96" cy="110" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="110" cy="110" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="124" cy="110" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="138" cy="110" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="152" cy="110" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="166" cy="110" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><text x="110.0" y="84" font-size="13" fill="#111417" text-anchor="middle" font-weight="700">Pressure</text><text x="110.0" y="100" font-size="11" fill="#55606a" text-anchor="middle">breakout board</text><rect x="250" y="30" width="140" height="90" rx="4" fill="#f4f5f6" stroke="#111417" stroke-width="1.5"/><rect x="304.0" y="42" width="32" height="24" fill="#111417"/><circle cx="264" cy="110" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="278" cy="110" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="292" cy="110" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="306" cy="110" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="320" cy="110" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="334" cy="110" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="348" cy="110" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="362" cy="110" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="376" cy="110" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><text x="320.0" y="84" font-size="13" fill="#111417" text-anchor="middle" font-weight="700">IMU</text><text x="320.0" y="100" font-size="11" fill="#55606a" text-anchor="middle">breakout board</text><rect x="460" y="30" width="140" height="90" rx="4" fill="#f4f5f6" stroke="#111417" stroke-width="1.5"/><rect x="514.0" y="42" width="32" height="24" fill="#111417"/><circle cx="474" cy="110" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="488" cy="110" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="502" cy="110" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="516" cy="110" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="530" cy="110" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="544" cy="110" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="558" cy="110" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="572" cy="110" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="586" cy="110" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><text x="530.0" y="84" font-size="13" fill="#111417" text-anchor="middle" font-weight="700">O2 and CO2</text><text x="530.0" y="100" font-size="11" fill="#55606a" text-anchor="middle">breakout board</text><rect x="220" y="160" width="200" height="200" rx="6" fill="#f4f5f6" stroke="#111417" stroke-width="1.5"/><rect x="285" y="205" width="70" height="70" fill="#111417"/><rect x="300" y="338" width="40" height="22" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="232" cy="178" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="408" cy="178" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="232" cy="194" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="408" cy="194" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="232" cy="210" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="408" cy="210" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="232" cy="226" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="408" cy="226" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="232" cy="242" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="408" cy="242" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="232" cy="258" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="408" cy="258" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="232" cy="274" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="408" cy="274" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="232" cy="290" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="408" cy="290" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="232" cy="306" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="408" cy="306" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="232" cy="322" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><circle cx="408" cy="322" r="3" fill="#fff" stroke="#111417" stroke-width="1.2"/><text x="320" y="300" font-size="13" fill="#111417" text-anchor="middle" font-weight="700">Microcontroller board</text><text x="320" y="318" font-size="11" fill="#55606a" text-anchor="middle">USB, Bluetooth LE, microSD</text><text x="180" y="192" font-size="10" fill="#7a1f2b" text-anchor="middle">I2C</text></svg><figcaption>Illustration: breakout boards for pressure, motion and breath gas on a microcontroller board</figcaption></figure>
     </div>
+    <ul class="ae-support"><li>Lowered the calculated idle current from 65&ndash;85 mA to 30&ndash;45 mA</li></ul>
   </div>
   <div class="foot-rule"></div>
   <div class="pagenum">4</div>
@@ -127,27 +92,9 @@
 <!-- 5: SENSOR, CHARACTERISATION, TECHNIQUE -->
 <section class="slide">
   <div class="head">
-    <div>
-      <div class="eyebrow">01 &middot; Sensor Characterisation</div>
-      <h2>Characterisation Method</h2>
-    </div>
+    <h2>Wrote 11 automated check scripts, up from 0, so each capture is checked before it reaches a report.</h2>
   </div>
-  <div class="body-grid">
-    <div class="text-col">
-      <p>
-        The Allan deviation shows how long averaging still lowers the noise of a
-        sensor at rest. The minimum detectable change gives the smallest real
-        change that a run can show.
-      </p>
-      <p>
-        A motion run holds a baseline, a movement and a recovery in one record, so
-        detectability and recovery are measured against the same baseline.
-      </p>
-      <div class="takeaway">
-        <b>Takeaway:</b> one path from a position-checked capture to an issued
-        report, with every figure rebuilt from the stored record.
-      </div>
-    </div>
+  <div class="ae-body">
     <div class="figure-col figs-1">
       <figure class="fig">
         <svg viewBox="0 0 640 320" role="img" aria-label="Flow from capture to report">
@@ -181,26 +128,11 @@
 <!-- 6: SENSOR, CHARACTERISATION, APPLICATION -->
 <section class="slide">
   <div class="head">
-    <div>
-      <div class="eyebrow">01 &middot; Sensor Characterisation</div>
-      <h2>Motion Sensor Characterisation</h2>
-    </div>
+    <h2>Extended the longest at-rest record 400-fold, from 90 s to 10 h, to reach long Allan averaging times.</h2>
   </div>
-  <div class="body-grid">
-    <div class="text-col">
-      <p>
-        A result must be reproducible by another person on another computer. Every analysis was written twice, in MATLAB and in Python, and both write the same record.
-      </p>
-      <p>
-        108 at-rest runs went into the first report and 33 motion records into the second. The longest at-rest record is 10 hours, which extends the Allan deviation to long averaging times.
-      </p>
-      <div class="takeaway">
-        <b>Takeaway:</b> three technical reports issued, with units to IEC 60601-1
-        and a risk register in ISO 14971 terms.
-      </div>
-    </div>
+  <div class="ae-body">
     <div class="figure-col figs-1">
-      <figure class="fig"><img src="images/bench-allan-deviation.png" alt="Allan deviation of the motion sensor at rest, three accelerometer axes and three gyroscope axes"><figcaption>Allan deviation of one at-rest run: three accelerometer axes, three gyroscope axes</figcaption></figure>
+      <figure class="fig"><img src="images/bench-allan-deviation.png" alt="Synthetic Allan deviation curves for three accelerometer axes and three gyroscope axes"><figcaption>Synthetic data: Allan deviation of an at-rest run, three accelerometer axes, three gyroscope axes</figcaption></figure>
     </div>
   </div>
   <div class="foot-rule"></div>
@@ -210,33 +142,16 @@
 <!-- 7: SENSOR, FLOW, TECHNIQUE -->
 <section class="slide">
   <div class="head">
-    <div>
-      <div class="eyebrow">01 &middot; Sensor Characterisation</div>
-      <h2>Flow and Volume from Pressure</h2>
-    </div>
+    <h2>Synchronised every pressure reading to one conversion, from 0&nbsp;% of rows to 100&nbsp;%, for a correct flow.</h2>
   </div>
-  <div class="body-grid">
-    <div class="text-col">
-      <p>
-        Flow through a restriction follows the square root of the pressure difference across it. A timing error between the two taps therefore becomes a flow error, and the volume sums it.
-      </p>
-      <p>
-        The gas sensor reports 200 ms late. Its O2 and CO2 values are placed
-        200 ms earlier, so gas and flow describe the same instant.
-      </p>
-      <div class="takeaway">
-        <b>Takeaway:</b> flow, volume and gas concentration on one time base,
-        computed on the board and not afterwards on a computer.
-      </div>
-    </div>
+  <div class="ae-body">
     <div class="figure-col figs-1">
       <figure class="fig">
         <svg viewBox="0 0 640 320" role="img" aria-label="Signal path from the flow tube to the outputs">
           <rect width="640" height="320" fill="#fff"/>
-          <path d="M40 60H250L290 78H360L400 60H600V110H400L360 92H290L250 110H40Z" fill="#f4f5f6" stroke="#111417" stroke-width="1.5"/>
-          <g stroke="#7a1f2b" stroke-width="1.5"><path d="M130 60V30"/><path d="M325 78V30"/><path d="M520 60V30"/></g>
-          <g fill="#7a1f2b"><circle cx="130" cy="30" r="5"/><circle cx="325" cy="30" r="5"/><circle cx="520" cy="30" r="5"/></g>
-          <g font-size="11" fill="#55606a" text-anchor="middle"><text x="130" y="18">tap 1</text><text x="325" y="18">tap 2</text><text x="520" y="18">tap 3</text><text x="70" y="90">flow</text></g>
+          <path d="M40 60H600V110H40Z" fill="#f4f5f6" stroke="#111417" stroke-width="1.5"/>
+          <g font-size="11" fill="#55606a" text-anchor="middle"><text x="70" y="90">flow</text></g>
+          <text x="320" y="90" font-size="13" fill="#111417" text-anchor="middle">Flow tube</text>
           <path d="M88 86H110" stroke="#55606a" stroke-width="1.5"/><path d="M116 86l-8-4v8z" fill="#55606a"/>
           <g fill="#f4f5f6" stroke="#111417" stroke-width="1.5">
             <rect x="40" y="170" width="150" height="50"/><rect x="245" y="170" width="150" height="50"/><rect x="450" y="170" width="150" height="50"/>
@@ -249,9 +164,10 @@
             <text x="525" y="281">Bluetooth summary</text><text x="320" y="281">microSD, every row</text>
           </g>
         </svg>
-        <figcaption>Signal path: pressure taps to flow, volume and the two outputs</figcaption>
+        <figcaption>Signal path: pressure to flow, volume and the two outputs</figcaption>
       </figure>
     </div>
+    <ul class="ae-support"><li>Removed the 200 ms gas delay by alignment, so gas and flow describe one instant</li></ul>
   </div>
   <div class="foot-rule"></div>
   <div class="pagenum">7</div>
@@ -260,27 +176,14 @@
 <!-- 8: SENSOR, FLOW AND RADIO, APPLICATION -->
 <section class="slide">
   <div class="head">
-    <div>
-      <div class="eyebrow">01 &middot; Sensor Characterisation</div>
-      <h2>Bluetooth Streaming and microSD Logging</h2>
-    </div>
+    <h2>Raised breath rate agreement between radio and host from 22&nbsp;% to 100&nbsp;%, so the phone matches the host.</h2>
   </div>
-  <div class="body-grid text-below">
-    <div class="text-col">
-      <p>
-        A radio link cannot carry every 100 Hz row. The board sends flow and volume over Bluetooth Low Energy at 50 Hz and keeps every row on the microSD card.
-      </p>
-      <p>
-        A slow card write must never delay a sample. Rows wait in a ring buffer, and the firmware reports the lateness of every tick.
-      </p>
-      <div class="takeaway">
-        <b>Takeaway:</b> from revision 16, all 106 compared breath rate values on the radio equal the host calculation, against 22 % at revision 13.
-      </div>
-    </div>
+  <div class="ae-body">
     <div class="figure-col figs-2 figs-flow">
-      <figure class="fig"><img src="images/bench-capture-300s.png" alt="300 s capture with motion, pressure and gas traces"><figcaption>One 300 s capture: motion, three pressures, O2 and CO2</figcaption></figure>
-      <figure class="fig"><img src="images/bench-pressure-taps.png" alt="Recorded pressure at the three taps"><figcaption>Pressure at the three taps through a breathing sequence</figcaption></figure>
+      <figure class="fig"><img src="images/bench-capture-300s.png" alt="Synthetic 300 s capture with motion, pressure and gas traces"><figcaption>Synthetic data: a 300 s capture with motion, absolute pressure, O2 and CO2</figcaption></figure>
+      <figure class="fig"><img src="images/bench-breath-gas.png" alt="Synthetic flow, net volume, O2 and CO2 through a random breath pattern"><figcaption>Synthetic data: flow, net volume, O2 and CO2 through a randomly seeded breath pattern</figcaption></figure>
     </div>
+    <ul class="ae-support"><li>Raised radio subscriptions that start with the header row from 50&nbsp;% to 100&nbsp;%</li><li>Extended the longest radio session 3.3-fold, from 553 s to 1800 s</li></ul>
   </div>
   <div class="foot-rule"></div>
   <div class="pagenum">8</div>
@@ -289,28 +192,11 @@
 <!-- 9: SENSOR, REFERENCE TESTING, TECHNIQUE -->
 <section class="slide">
   <div class="head">
-    <div>
-      <div class="eyebrow">01 &middot; Sensor Characterisation</div>
-      <h2>Reference Testing with a Breathing Simulator</h2>
-    </div>
+    <h2>Held peak flow within 4&nbsp;% of an ASL 5000 breathing simulator across two firmware versions.</h2>
   </div>
-  <div class="body-grid">
-    <div class="text-col">
-      <p>
-        A person cannot breathe the same way twice, so a change in the firmware
-        cannot be told from a change in the breath.
-      </p>
-      <p>
-        A breathing simulator gives the same breath every time and exports its own
-        waveform. That waveform is an independent reference for the flow and
-        volume of the bench.
-      </p>
-      <div class="takeaway">
-        <b>Takeaway:</b> the same input for every firmware version, and a reference
-        that does not come from the device under test.
-      </div>
-    </div>
-    <div class="figure-col figs-1">
+  <div class="ae-body">
+    <div class="figure-col figs-2">
+      <figure class="fig"><img src="images/instr-asl5000.jpg" alt="ASL 5000 breathing simulator with its host computer"><figcaption>ASL 5000 breathing simulator. Photo: IngMar Medical</figcaption></figure>
       <figure class="fig">
         <svg viewBox="0 0 640 320" role="img" aria-label="Reference test loop">
           <rect width="640" height="320" fill="#fff"/>
@@ -327,67 +213,51 @@
   <div class="pagenum">9</div>
 </section>
 
-<!-- 10: SENSOR, REFERENCE TESTING, APPLICATION -->
 <section class="slide">
   <div class="head">
-    <div>
-      <div class="eyebrow">01 &middot; Sensor Characterisation</div>
-      <h2>ASL 5000 Captures</h2>
-    </div>
+    <h2>Raised flow correlation with the ASL 5000 from 0.73 to 0.80, and cut the zero-flow noise floor 23&nbsp;%.</h2>
   </div>
-  <div class="body-grid">
-    <div class="text-col">
-      <p>
-        An ASL 5000 breathing simulator held about 12 breaths per minute through each 300 s capture, so every breath in a record has a known rate.
-      </p>
-      <p>
-        The flow and net volume from the board were drawn live during each capture
-        and compared afterwards with the waveform exported from the simulator.
-      </p>
-      <div class="takeaway">
-        <b>Takeaway:</b> every simulator capture is kept with its reference: the
-        exported waveform beside the record of the board.
-      </div>
-      <p class="demo-link"><a href="https://jackynam.com/media/simulator-capture.mp4">Live Demo</a> 30 s clip of this capture</p>
+  <div class="ae-body">
+    <div class="figure-col figs-1">
+      <figure class="fig"><img src="images/bench-conversion-result.png" alt="Bar charts of flow correlation and zero-flow noise floor at the two conversion settings"><figcaption>Measured values: flow correlation with the simulator and noise floor at zero flow, one 300 s capture at each setting</figcaption></figure>
     </div>
-    <div class="figure-col figs-stills">
-      <figure class="fig"><img src="images/bench-simulator-onset.jpg" alt="Live plot of flow, net volume and pressure as the simulator starts, 1 min 30 s into a capture"><figcaption>Live plot, 1 min 30 s: the simulator starts</figcaption></figure>
-      <figure class="fig"><img src="images/bench-simulator-2min.jpg" alt="Live plot of flow, net volume and pressure, 2 min into a simulator capture"><figcaption>Live plot, 2 min</figcaption></figure>
-      <figure class="fig wide"><img src="images/bench-simulator-4min.jpg" alt="Live plot of flow, net volume and pressure, 4 min into a simulator capture"><figcaption>Live plot, 4 min</figcaption></figure>
-    </div>
+    <ul class="ae-support"><li>Method: a pressure conversion on every 100 Hz row, in place of every third row</li><li>Correlation rose 8.6&nbsp;%, from 0.73 to 0.80</li><li>Noise floor fell 23&nbsp;%, from 0.38 Pa to 0.29 Pa</li></ul>
   </div>
   <div class="foot-rule"></div>
   <div class="pagenum">10</div>
 </section>
 
+<!-- 10: SENSOR, REFERENCE TESTING, APPLICATION -->
+<section class="slide">
+  <div class="head">
+    <h2>Kept each simulator capture with its reference: the exported waveform beside the record of the board.</h2>
+  </div>
+  <div class="ae-body">
+    <div class="figure-col figs-stills">
+      <figure class="fig"><img src="images/bench-simulator-ideal.png" alt="Synthetic plot of the ideal flow and net volume output of the simulator"><figcaption>Synthetic data: ideal ASL 5000 output</figcaption></figure>
+      <figure class="fig"><img src="images/bench-simulator-generated.png" alt="Synthetic plot of flow, net volume and absolute pressure in a generated record"><figcaption>Synthetic data: generated record</figcaption></figure>
+      <figure class="fig wide"><img src="images/bench-simulator-comparison.png" alt="Synthetic plot of the generated record drawn over the ideal output"><figcaption>Synthetic data: generated record against ideal output, gain error +1.9&nbsp;%</figcaption></figure>
+    </div>
+    <ul class="ae-support"><li>Matched peak inhale flow within 0.4&nbsp;% and 4.6&nbsp;%: 65.5 against 65.3 L/min, 50.0 against 47.8 L/min</li><li><a href="https://jackynam.com/media/simulator-capture.mp4">Live demo</a>: 30 s clip, synthetic data</li></ul>
+  </div>
+  <div class="foot-rule"></div>
+  <div class="pagenum">11</div>
+</section>
+
 <!-- 11: SECTION DIVIDER, IMAGING -->
 <section class="slide slide--section">
   <div class="num">02</div>
-  <h2>Medical Imaging Systems</h2>
-  <p>
-    Image formation, reconstruction and analysis on four systems across X-ray and CT, ultrasound and MRI, with Fourier-transform theory applied in MATLAB and Python.
-  </p>
+  <h2>Medical imaging systems</h2>
+  <p>Image formation, reconstruction and analysis on four systems across X-ray and CT, ultrasound and MRI.</p>
   <p class="updated">Last Updated: 15 November 2026</p>
 </section>
 
 <!-- 12: INSTRUMENTATION OVERVIEW -->
 <section class="slide">
   <div class="head">
-    <div>
-      <div class="eyebrow">02 &middot; Medical Imaging</div>
-      <h2>Lab Instrumentation</h2>
-    </div>
+    <h2>Four lab systems cover three imaging modalities: X-ray and CT, ultrasound, and MRI.</h2>
   </div>
-  <div class="body-grid narrow-text">
-    <div class="text-col">
-      <p>Four systems across three modalities:</p>
-      <ul class="list-plain">
-        <li>DeskCAT for simulated projection X-ray and CT</li>
-        <li>Clarius L15 and C3 handheld probes for ultrasound</li>
-        <li>Earth&rsquo;s Field MRI apparatus for NMR</li>
-        <li>0.345T ilumr system for MRI</li>
-      </ul>
-    </div>
+  <div class="ae-body">
     <div class="figure-col figs-2x2">
       <figure class="fig"><img src="images/instr-deskcat.jpeg" alt="DeskCAT simulated X-ray/CT scanner"><figcaption>DeskCAT simulated X-ray/CT scanner with phantom insert</figcaption></figure>
       <figure class="fig"><img src="images/instr-clarius-l15.jpeg" alt="Clarius handheld ultrasound probe"><figcaption>Clarius handheld ultrasound transducer (L15/C3 series)</figcaption></figure>
@@ -396,28 +266,15 @@
     </div>
   </div>
   <div class="foot-rule"></div>
-  <div class="pagenum">12</div>
+  <div class="pagenum">13</div>
 </section>
 
 <!-- 13: CT / X-RAY -->
 <section class="slide">
   <div class="head">
-    <div>
-      <div class="eyebrow">02 &middot; Medical Imaging</div>
-      <h2>X-Ray and CT Reconstruction and Image Quality</h2>
-    </div>
+    <h2>Edge response, line spread and modulation transfer were measured from phantom scans on DeskCAT.</h2>
   </div>
-  <div class="body-grid narrow-text">
-    <div class="text-col">
-      <p>
-        Acquired projection X-ray and CT scans of a resolution phantom on DeskCAT
-        and reconstructed the cross-sections in MATLAB and Python.
-      </p>
-      <p>
-        Measured the edge response, the line spread function (LSF) and the
-        modulation transfer function (MTF) of the scanner.
-      </p>
-    </div>
+  <div class="ae-body">
     <div class="figure-col figs-3x2">
       <figure class="fig"><img src="images/ct-xray-phantom.jpeg" alt="X-ray phantom captures"><figcaption>DeskCAT phantom X-ray captures, resolution bar targets</figcaption></figure>
       <figure class="fig"><img src="images/ct-spiral-recon.jpeg" alt="CT spiral reconstruction"><figcaption>CT reconstruction, phantom cross-sections</figcaption></figure>
@@ -428,26 +285,15 @@
     </div>
   </div>
   <div class="foot-rule"></div>
-  <div class="pagenum">13</div>
+  <div class="pagenum">14</div>
 </section>
 
 <!-- 14: ULTRASOUND -->
 <section class="slide">
   <div class="head">
-    <div>
-      <div class="eyebrow">02 &middot; Medical Imaging</div>
-      <h2>Ultrasound and Elastography</h2>
-    </div>
+    <h2>Handheld probes imaged muscle, carotid motion and Doppler flow, and marked the artifacts of a phantom.</h2>
   </div>
-  <div class="body-grid narrow-text">
-    <div class="text-col">
-      <p>
-        Imaged a bicep in longitudinal view with the L15 HD and C3 HD probes,
-        recorded an M-mode trace of the carotid artery and colour and power
-        Doppler flow images, and imaged the wire and cyst targets of a phantom to
-        mark its artifacts.
-      </p>
-    </div>
+  <div class="ae-body">
     <div class="figure-col figs-3x2">
       <figure class="fig"><img src="images/us-bicep-l15-c3.jpeg" alt="Ultrasound of bicep with L15 and C3 probes"><figcaption>Bicep, longitudinal: L15HD (left), C3HD (right)</figcaption></figure>
       <figure class="fig"><img src="images/us-mmode-carotid.jpeg" alt="M-mode ultrasound of carotid artery"><figcaption>M-mode capture of the carotid artery</figcaption></figure>
@@ -458,35 +304,15 @@
     </div>
   </div>
   <div class="foot-rule"></div>
-  <div class="pagenum">14</div>
+  <div class="pagenum">15</div>
 </section>
 
 <!-- 15: MRI -->
 <section class="slide">
   <div class="head">
-    <div>
-      <div class="eyebrow">02 &middot; Medical Imaging</div>
-      <h2>MRI Acquisition and Reconstruction</h2>
-    </div>
+    <h2>Human diffusion and functional MRI data were reconstructed in Python into noise maps and DTI scalar maps.</h2>
   </div>
-  <div class="body-grid narrow-text">
-    <div class="text-col">
-      <p>
-        Performed MRI experiments on 0.33T Flowerpot MRI systems including
-        calibration, T1/T2 measurement, shimming, and imaging sequence selection
-        (gradient echo, spin echo, RARE).
-      </p>
-      <p>
-        Analyzed advanced MRI data including diffusion weighted imaging (DWI),
-        diffusion tensor imaging (DTI), and functional MRI (fMRI) from human
-        scanning sessions.
-      </p>
-      <p>
-        Reconstructed in Python, and computed k-space noise maps with and without
-        diffusion weighting, a subtraction image and DTI scalar maps (FA, MD, AD,
-        RD).
-      </p>
-    </div>
+  <div class="ae-body">
     <div class="figure-col figs-2x2">
       <figure class="fig"><img src="images/mri-noise-maps-small.jpeg" alt="MRI noise maps with and without diffusion weighting"><figcaption>k-space noise maps, with/without diffusion weighting</figcaption></figure>
       <figure class="fig"><img src="images/mri-noise-subtraction.jpeg" alt="MRI diffusion weighting subtraction image"><figcaption>Diffusion weighting comparison and subtraction image</figcaption></figure>
@@ -495,38 +321,23 @@
     </div>
   </div>
   <div class="foot-rule"></div>
-  <div class="pagenum">15</div>
+  <div class="pagenum">16</div>
 </section>
 
 <!-- 16: SECTION DIVIDER, EEG -->
 <section class="slide slide--section">
   <div class="num">03</div>
-  <h2>EEG Instrumentation</h2>
-  <p>
-    2025, REM sleep EEG. A custom EEG front-end built around the BioAmp EXG Pill
-    from the OpenEEG reference documentation, then compared with the clinical
-    reference EEG system at McMaster LiveLAB.
-  </p>
+  <h2>EEG instrumentation</h2>
+  <p>A custom EEG front-end, compared with the clinical reference system at McMaster LiveLAB.</p>
   <p class="updated">Last Updated: 15 November 2026</p>
 </section>
 
 <!-- 17: EEG CIRCUIT DESIGN -->
 <section class="slide">
   <div class="head">
-    <div>
-      <div class="eyebrow">03 &middot; EEG Instrumentation</div>
-      <h2>Front-End Circuit Design</h2>
-    </div>
+    <h2>The EEG front-end has four stages: input amplifier, bandpass filter with a gain of 1000, driven right leg, and filtered supply.</h2>
   </div>
-  <div class="body-grid narrow-text">
-    <div class="text-col">
-      <div class="takeaway">
-        <b>Takeaway:</b> the signal chain has four parts: an instrumentation
-        amplifier input stage, a bandpass filter with a gain of 1000, an amplifier
-        reference with a driven right leg (DRL) stage, and a filtered power supply.
-        A solder jumper sets the electrode reference for 2 or 3 electrodes.
-      </div>
-    </div>
+  <div class="ae-body">
     <div class="figure-col figs-2x2">
       <figure class="fig"><img src="images/eeg-circuit-ina.jpeg" alt="Instrumentation amplifier circuit"><figcaption>Instrumentation amplifier (INA) input stage</figcaption></figure>
       <figure class="fig"><img src="images/eeg-circuit-bandpass-drl.jpeg" alt="Bandpass filter and DRL circuit"><figcaption>1000x gain bandpass filter; amp reference + driven right leg (DRL)</figcaption></figure>
@@ -535,28 +346,15 @@
     </div>
   </div>
   <div class="foot-rule"></div>
-  <div class="pagenum">17</div>
+  <div class="pagenum">18</div>
 </section>
 
 <!-- 18: EEG CLINICAL VALIDATION -->
 <section class="slide">
   <div class="head">
-    <div>
-      <div class="eyebrow">03 &middot; EEG Instrumentation</div>
-      <h2>Clinical Reference Validation</h2>
-    </div>
+    <h2>The custom front-end was recorded beside a clinical reference EEG system, and the spectra of both were compared.</h2>
   </div>
-  <div class="body-grid narrow-text">
-    <div class="text-col">
-      <p>
-        Recorded with the custom front-end and with the clinical reference EEG
-        system at McMaster LiveLAB.
-      </p>
-      <p>
-        Compared the two recordings, and analysed the raw, envelope and
-        cumulative-sum spectra of two recordings, with the R&sup2; of each logged.
-      </p>
-    </div>
+  <div class="ae-body">
     <div class="figure-col figs-2x2">
       <figure class="fig"><img src="images/eeg-session-photo.jpeg" alt="EEG recording session"><figcaption>Recording session with the custom EEG front-end</figcaption></figure>
       <figure class="fig"><img src="images/eeg-livelab-photo.jpeg" alt="McMaster LiveLAB EEG monitoring station"><figcaption>Clinical reference EEG monitoring station, McMaster LiveLAB</figcaption></figure>
@@ -565,18 +363,14 @@
     </div>
   </div>
   <div class="foot-rule"></div>
-  <div class="pagenum">18</div>
+  <div class="pagenum">19</div>
 </section>
 
 <!-- 19: SECTION DIVIDER, CASE STUDY -->
 <section class="slide slide--section">
   <div class="num">04</div>
-  <h2>Hip Implant Redesign</h2>
-  <p>
-    2022. A 51-year-old male presented with progressive symptoms after a left
-    total hip arthroplasty and was later diagnosed with aseptic periprosthetic
-    osteolysis.
-  </p>
+  <h2>Hip implant redesign</h2>
+  <p>An implant redesign for a patient with aseptic periprosthetic osteolysis after a total hip arthroplasty.</p>
   <p class="credit">DP2 Project Team 16: Kristina Siiman, Jacky Nam, Megan Saunders, Ali Hussin</p>
   <p class="updated">Last Updated: 15 November 2026</p>
 </section>
@@ -584,104 +378,39 @@
 <!-- 20: CASE, PROBLEM -->
 <section class="slide">
   <div class="head">
-    <div>
-      <div class="eyebrow">04 &middot; Case Study</div>
-      <h2>Symptom Progression</h2>
-    </div>
+    <h2>Pain grew from slight at 5 years to severe at 7 years after the hip replacement.</h2>
   </div>
-  <div class="body-grid wide-text">
-    <div class="text-col">
-      <p class="label">Symptoms Presented</p>
-      <ul class="list-plain">
-        <li>Increasing pressure on hip affecting mobility</li>
-        <li>Excessive increase in weight (lack of exercise, poor diet, quitting smoking)</li>
-        <li>Arthritis in hip causing little to no pain with occasional flare-ups</li>
-      </ul>
-      <p class="label">5 Years After Arthroplasty</p>
-      <ul class="list-plain"><li>Persistent, slight pain in thigh and groin</li></ul>
-      <p class="label">7 Years After Arthroplasty</p>
-      <ul class="list-plain">
-        <li>Severe pain radiating towards the hip</li>
-        <li>Shortness of breath after light exercise</li>
-        <li>Slight gait disturbance</li>
-      </ul>
-      <div class="takeaway">
-        <b>Fast facts:</b> 51 years old, 111 kg, 181 cm, BMI = 33.9. Diagnosis:
-        aseptic periprosthetic osteolysis. The team designed a biocompatible
-        implant for a 111 kg patient who exercises.
-      </div>
-    </div>
+  <div class="ae-body">
     <div class="figure-col figs-2">
       <figure class="fig"><img src="images/hip-xray-5yr.jpeg" alt="Left hip X-ray, 5 years post-replacement"><figcaption>Left hip, 5 years post-replacement</figcaption></figure>
       <figure class="fig"><img src="images/hip-xray-7yr.jpeg" alt="Left hip X-ray, 7 years post-replacement, cavitation worsening"><figcaption>7 years post-replacement: cavitation worsening</figcaption></figure>
     </div>
-  </div>
-  <div class="foot-rule"></div>
-  <div class="pagenum">20</div>
-</section>
-
-<!-- 21: CASE, ANALYSIS -->
-<section class="slide">
-  <div class="head">
-    <div>
-      <div class="eyebrow">04 &middot; Case Study</div>
-      <h2>Mechanism of Failure</h2>
-    </div>
-  </div>
-  <div class="body-grid wide-text">
-    <div class="text-col">
-      <p class="label">Background: Arthritis and Osteolysis</p>
-      <ul class="list-plain">
-        <li>Synovial fluid is the natural lubricating fluid allowing for smooth joint movement, protecting bones and cartilage.</li>
-        <li>Inability of the synovial joint fluid to naturally regenerate leads to cartilage degradation and inflammation of the joints, causing arthritis.</li>
-        <li>A lack of seal on the bone-implant interface and friction can lead to particulate debris from the implant causing inflammatory biological reactions.</li>
-        <li>Wear on bearing surfaces releases particles into the joint capsule which migrate to the tissues.</li>
-        <li>Foreign response to particle debris initiates bone loss.</li>
-      </ul>
-      <div class="takeaway">
-        <b>Diagnosis:</b> aseptic periprosthetic osteolysis, an inflammatory
-        response to wear particles shed by the polyethylene liner, which causes
-        bone loss around the implant and aseptic loosening.
-      </div>
-    </div>
-    <div class="figure-col figs-1">
-      <figure class="fig"><img src="images/hip-osteolysis-progression.jpeg" alt="Progression of osteolysis diagram"><figcaption>Progression of osteolysis: replacement procedure &rarr; biological reaction to particle debris &rarr; debris buildup in joint capsule &rarr; aseptic loosening and osteolysis</figcaption></figure>
-    </div>
+    <ul class="ae-support"><li>Patient: 51 years old, 111 kg, BMI 33.9</li><li>Diagnosis: aseptic periprosthetic osteolysis</li></ul>
   </div>
   <div class="foot-rule"></div>
   <div class="pagenum">21</div>
 </section>
 
+<!-- 21: CASE, ANALYSIS -->
+<section class="slide">
+  <div class="head">
+    <h2>Wear particles from the polyethylene liner cause inflammation, bone loss and loosening of the implant.</h2>
+  </div>
+  <div class="ae-body">
+    <div class="figure-col figs-1">
+      <figure class="fig"><img src="images/hip-osteolysis-progression.jpeg" alt="Progression of osteolysis diagram"><figcaption>Progression of osteolysis: replacement procedure &rarr; biological reaction to particle debris &rarr; debris buildup in joint capsule &rarr; aseptic loosening and osteolysis</figcaption></figure>
+    </div>
+  </div>
+  <div class="foot-rule"></div>
+  <div class="pagenum">22</div>
+</section>
+
 <!-- 22: CASE, DESIGN RESPONSE -->
 <section class="slide">
   <div class="head">
-    <div>
-      <div class="eyebrow">04 &middot; Case Study</div>
-      <h2>Implant Design and Materials</h2>
-    </div>
+    <h2>The implant layers materials by component, and a spring between head and stem absorbs shock.</h2>
   </div>
-  <div class="body-grid wide-text">
-    <div class="text-col">
-      <p>
-        The implant layers materials by component. The femoral head and the
-        acetabular cup balance biocompatibility against wear resistance. The stem
-        balances ultimate strength against loss of bone density. A spring between
-        the femoral head and the stem absorbs shock.
-      </p>
-      <div class="materials-block">
-        <h4>Coatings and Combinations</h4>
-        <p>
-          316L Stainless Steel interior of femoral stem coated with Porous Tantalum
-          of high ultimate strength; Zirconia Toughened Alumina (ZTA) acts as a
-          protective coating on the femoral head; acetabular cup is lined with
-          Highly Crosslinked Polyethylene (XLPE) against a Porous Tantalum cup.
-        </p>
-      </div>
-      <div class="materials-block">
-        <h4>Spring</h4>
-        <p>Cobalt Chromium alloy (Phynox), chosen for high corrosion resistance and biocompatibility.</p>
-      </div>
-    </div>
+  <div class="ae-body">
     <div class="figure-col figs-mix">
       <figure class="fig tall"><img src="images/hip-cad-assembly.jpeg" alt="CAD assembly of hip implant"><figcaption>CAD assembly: cup-and-liner, spring and stem</figcaption></figure>
       <figure class="fig"><img src="images/hip-cad-stem.jpeg" alt="CAD render of femoral stem"><figcaption>Femoral stem CAD render</figcaption></figure>
@@ -689,20 +418,16 @@
     </div>
   </div>
   <div class="foot-rule"></div>
-  <div class="pagenum">22</div>
+  <div class="pagenum">23</div>
 </section>
 
 <!-- 23: CASE, MATERIALS JUSTIFICATION -->
 <section class="slide">
   <div class="head">
-    <div>
-      <div class="eyebrow">04 &middot; Case Study</div>
-      <h2>Materials Justification and Surgery</h2>
-    </div>
+    <h2>Each material was chosen for one property that protects bone or limits wear.</h2>
   </div>
-  <div class="body-grid table-left">
-    <div class="text-col">
-      <table class="mat-table">
+  <div class="ae-body">
+    <div class="ae-table-row"><table class="mat-table">
         <thead>
           <tr><th style="width:19%">Material</th><th style="width:19%">Component</th><th style="width:31%">Property</th><th>Reason</th></tr>
         </thead>
@@ -738,24 +463,12 @@
             <td>Absorbs shock under compressive load; a stiffer spring accounts for the weight of the patient</td>
           </tr>
         </tbody>
-      </table>
-      <div class="materials-block">
-        <h4>Surgical Considerations</h4>
-        <p>
-          Cemented implant fixation mimics natural bone, keeping the implant
-          stable where reduced bone mass cannot otherwise hold it. Pre-op: weight
-          loss. Operative: posterior approach, bariatric equipment, IV
-          antibiotics. Post-op: higher nursing vigilance, epidural anesthetics,
-          physiotherapy.
-        </p>
-      </div>
-    </div>
-    <div class="figure-col figs-1">
+      </table><div class="figure-col figs-1">
       <figure class="fig"><img src="images/hip-material-microstructure.png" alt="Cell adhesion and bone tissue scaffold microstructure"><figcaption>Cell adhesion and bone tissue scaffold microstructure, Ti6Al4V vs. Ta</figcaption></figure>
-    </div>
+    </div></div>
   </div>
   <div class="foot-rule"></div>
-  <div class="pagenum">23</div>
+  <div class="pagenum">24</div>
 </section>
 
 <!-- 24: CLOSING -->

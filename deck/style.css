@@ -231,6 +231,10 @@ html, body {
   margin-bottom: 0.1in;
 }
 
+.body-grid.text-only {
+  grid-template-columns: 1fr;
+}
+
 .body-grid.wide-text {
   grid-template-columns: 3.1in 1fr;
 }
@@ -321,6 +325,8 @@ html, body {
 .figs-1 { grid-template-columns: 1fr; grid-template-rows: minmax(0, 1fr); }
 
 .figs-2 { grid-template-columns: 1fr 1fr; grid-template-rows: minmax(0, 1fr); }
+
+.figs-rows-2 { grid-template-columns: 1fr; grid-template-rows: repeat(2, minmax(0, 1fr)); }
 
 .figs-2x2 { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(2, minmax(0, 1fr)); }
 
